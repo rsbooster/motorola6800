@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C0CC2022968D6D6009BE6FB /* NOP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0CC2012968D6D6009BE6FB /* NOP.swift */; };
 		8CB86AA629683776007823D0 /* Motorola6800App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86AA529683776007823D0 /* Motorola6800App.swift */; };
 		8CB86AA829683776007823D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86AA729683776007823D0 /* ContentView.swift */; };
 		8CB86AAA29683778007823D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CB86AA929683778007823D0 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C0CC2012968D6D6009BE6FB /* NOP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NOP.swift; sourceTree = "<group>"; };
 		8CB86AA229683776007823D0 /* Motorola6800.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motorola6800.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB86AA529683776007823D0 /* Motorola6800App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motorola6800App.swift; sourceTree = "<group>"; };
 		8CB86AA729683776007823D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				8CB86AD8296865DA007823D0 /* ABA.swift */,
 				8CB86ADA29686641007823D0 /* LDA.swift */,
+				8C0CC2012968D6D6009BE6FB /* NOP.swift */,
 				8CB86ADC29686672007823D0 /* WAI.swift */,
 			);
 			path = InstructionSet;
@@ -279,6 +282,7 @@
 				8CB86AD22968444B007823D0 /* Extensions.swift in Sources */,
 				8CB86ADB29686641007823D0 /* LDA.swift in Sources */,
 				8CB86AA629683776007823D0 /* Motorola6800App.swift in Sources */,
+				8C0CC2022968D6D6009BE6FB /* NOP.swift in Sources */,
 				8CB86ADD29686672007823D0 /* WAI.swift in Sources */,
 				8CB86AD72968652E007823D0 /* InstructionSet.swift in Sources */,
 			);
