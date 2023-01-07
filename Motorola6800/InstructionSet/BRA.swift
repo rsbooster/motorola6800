@@ -1,21 +1,17 @@
 import Foundation
 
 extension InstructionSet {
-  static let BCC = [
+  static let BRA = [
     Instruction(
-      opCode: 0x24,
-      mnemonic: .BCC,
+      opCode: 0x20,
+      mnemonic: .BRA,
       addressingMode: .relative,
       executionTime: 4,
       action: { p, m in
         let (A, B, X, PC, SP, CC) = p.tuple()
         
-        if CC.C {
-          p.PC += 2
-        } else  {
-          let offset = m.readByte(PC + 1)
-          p.PC = (PC + 2).addingSigned(offset)
-        }
+        let offset = m.readByte(PC + 1)
+        p.PC = (PC + 2).addingSigned(offset)
       }
     ),
   ]

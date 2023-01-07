@@ -32,6 +32,7 @@ struct Instruction {
   enum Mnemonic {
     case ABA
     case BCC
+    case BRA
     case DAA
     case JMP
     case LDAA
@@ -51,6 +52,10 @@ typealias Memory = [UInt8]
 
 extension Processor: CustomStringConvertible {
   var description: String {
-    String(format: "A:%X B:%X X:%X PC:%X SP:%X", A, B, X, PC, SP)
+    String(
+      format: "A:%02X B:%02X X:%04X PC:%04X SP:%04X  H:%X N:%X Z:%X V:%X C:%X",
+      A, B, X, PC, SP,
+      CC.H, CC.N, CC.Z, CC.V, CC.C
+    )
   }
 }
