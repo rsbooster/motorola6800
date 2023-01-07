@@ -13,13 +13,10 @@ extension Array where Element == UInt8 {
 extension UInt16 {
   func addingSigned(_ signed: UInt8) -> UInt16 {
     let negative = signed[7]
-    
-    if negative {
-      let value = 0xFF - signed
-      return self - UInt16(value)
-    } else {
-      return self + UInt16(signed)
-    }
+    let mask: UInt16 = negative ? 0xFF00 : 0x0
+    let large = UInt16(signed) | mask
+    let (result, _) = self.addingReportingOverflow(large)
+    return result
   }
 }
 
