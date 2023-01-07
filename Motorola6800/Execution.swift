@@ -35,7 +35,7 @@ private let initialMemory: [UInt8] = {
     
     0x19,
     
-    0x7E, 0x00, 0x04,
+    0x24, 0xFB,
     
     0x3E,
   ]

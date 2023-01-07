@@ -26,10 +26,12 @@ struct Instruction {
     case indexed
     case extended
     case inherent
+    case relative
   }
   
   enum Mnemonic {
     case ABA
+    case BCC
     case DAA
     case JMP
     case LDAA
