@@ -29,9 +29,7 @@ extension InstructionSet {
         let address = m.readByte(PC + 1)
         let R = m.readByte(UInt16(address))
         
-        p.CC.N = R[7]
-        p.CC.Z = R == 0
-        p.CC.V = false
+        p.updateCC(result: R)
         
         p.A = R
         p.PC += 2
@@ -55,7 +53,7 @@ extension InstructionSet {
       }
     ),
     Instruction(
-      opCode: 0xB6,
+      opCode: 0xA6,
       mnemonic: .LDAA,
       addressingMode: .indexed,
       executionTime: 5,
@@ -99,9 +97,7 @@ extension InstructionSet {
         let address = m.readByte(PC + 1)
         let R = m.readByte(UInt16(address))
         
-        p.CC.N = R[7]
-        p.CC.Z = R == 0
-        p.CC.V = false
+        p.updateCC(result: R)
         
         p.B = R
         p.PC += 2

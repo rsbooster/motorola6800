@@ -4,7 +4,7 @@ extension InstructionSet {
   static let NOP = [
     Instruction(
       opCode: 0x01,
-      mnemonic: .ABA,
+      mnemonic: .NOP,
       addressingMode: .inherent,
       executionTime: 2,
       action: { p, _ in

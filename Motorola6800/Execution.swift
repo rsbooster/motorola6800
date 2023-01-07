@@ -17,6 +17,8 @@ func execute() {
   processor.PC = UInt16(memory.readWord(0xFFFE))
   
   while(true) {
+    print(processor.description)
+    
     let opCode = memory.readByte(processor.PC)
     let instruction = instructionMap[opCode]!
     
@@ -26,10 +28,14 @@ func execute() {
 
 private let initialMemory: [UInt8] = {
   let memoryStart: [UInt8] = [
-    0x86, 0x01,
-    0xC6, 0x02,
+    0x86, 0x00,
+    0xC6, 0x01,
     
     0x1B,
+    
+    0x19,
+    
+    0x7E, 0x00, 0x04,
     
     0x3E,
   ]

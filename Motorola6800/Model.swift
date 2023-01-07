@@ -30,8 +30,11 @@ struct Instruction {
   
   enum Mnemonic {
     case ABA
+    case DAA
+    case JMP
     case LDAA
     case LDAB
+    case NOP
     case WAI
   }
   
@@ -43,3 +46,9 @@ struct Instruction {
 }
 
 typealias Memory = [UInt8]
+
+extension Processor: CustomStringConvertible {
+  var description: String {
+    String(format: "A:%X B:%X X:%X PC:%X SP:%X", A, B, X, PC, SP)
+  }
+}
