@@ -29,7 +29,10 @@ func execute() {
 private let initialMemory: [UInt8] = {
   let memoryStart: [UInt8] = [
     0x86, 0x00,
-    0xC6, 0x01,
+    0xC6, 0xFF,
+    
+    0x43,
+    0x53,
     
     0x1B,
     

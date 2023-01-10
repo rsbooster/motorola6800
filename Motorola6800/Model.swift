@@ -33,6 +33,9 @@ struct Instruction {
     case ABA
     case BCC
     case BRA
+    case COM
+    case COMA
+    case COMB
     case DAA
     case JMP
     case LDAA

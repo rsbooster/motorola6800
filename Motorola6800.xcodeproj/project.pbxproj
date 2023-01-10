@@ -12,6 +12,7 @@
 		8C755A322969A39B00827729 /* JMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C755A312969A39B00827729 /* JMP.swift */; };
 		8C755A342969A92D00827729 /* BCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C755A332969A92D00827729 /* BCC.swift */; };
 		8C755A362969AF0A00827729 /* BRA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C755A352969AF0A00827729 /* BRA.swift */; };
+		8C755A38296CDF4100827729 /* COM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C755A37296CDF4100827729 /* COM.swift */; };
 		8CB86AA629683776007823D0 /* Motorola6800App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86AA529683776007823D0 /* Motorola6800App.swift */; };
 		8CB86AA829683776007823D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86AA729683776007823D0 /* ContentView.swift */; };
 		8CB86AAA29683778007823D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CB86AA929683778007823D0 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		8C755A312969A39B00827729 /* JMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMP.swift; sourceTree = "<group>"; };
 		8C755A332969A92D00827729 /* BCC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCC.swift; sourceTree = "<group>"; };
 		8C755A352969AF0A00827729 /* BRA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRA.swift; sourceTree = "<group>"; };
+		8C755A37296CDF4100827729 /* COM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = COM.swift; sourceTree = "<group>"; };
 		8CB86AA229683776007823D0 /* Motorola6800.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motorola6800.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB86AA529683776007823D0 /* Motorola6800App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motorola6800App.swift; sourceTree = "<group>"; };
 		8CB86AA729683776007823D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				8CB86AD8296865DA007823D0 /* ABA.swift */,
 				8C755A332969A92D00827729 /* BCC.swift */,
 				8C755A352969AF0A00827729 /* BRA.swift */,
+				8C755A37296CDF4100827729 /* COM.swift */,
 				8C755A2F29699ABC00827729 /* DAA.swift */,
 				8C755A312969A39B00827729 /* JMP.swift */,
 				8CB86ADA29686641007823D0 /* LDA.swift */,
@@ -289,6 +292,7 @@
 			files = (
 				8C755A342969A92D00827729 /* BCC.swift in Sources */,
 				8CB86AD0296837B5007823D0 /* Model.swift in Sources */,
+				8C755A38296CDF4100827729 /* COM.swift in Sources */,
 				8CB86AD9296865DA007823D0 /* ABA.swift in Sources */,
 				8CB86AD4296844B8007823D0 /* Execution.swift in Sources */,
 				8C755A3029699ABC00827729 /* DAA.swift in Sources */,
