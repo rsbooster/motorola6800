@@ -19,7 +19,7 @@ extension InstructionSet {
       }
     ),
     Instruction(
-      opCode: 0x43,
+      opCode: 0x53,
       mnemonic: .COMB,
       addressingMode: .inherent,
       executionTime: 2,
