@@ -25,6 +25,14 @@ extension UInt16 {
     let (result, _) = self.addingReportingOverflow(large)
     return result
   }
+  
+  var upper: UInt8 {
+    UInt8((self & 0xFF00) >> 8)
+  }
+  
+  var lower: UInt8 {
+    UInt8(self & 0x00FF)
+  }
 }
 
 extension Processor {
