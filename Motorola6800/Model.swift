@@ -40,6 +40,9 @@ struct Instruction {
     case JMP
     case LDAA
     case LDAB
+    case NEGA
+    case NEGB
+    case NEG
     case NOP
     case WAI
   }
