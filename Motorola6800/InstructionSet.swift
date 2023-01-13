@@ -11,6 +11,7 @@ extension InstructionSet {
     + InstructionSet.LDA
     + InstructionSet.LDS
     + InstructionSet.LDX
+    + InstructionSet.LSR
     + InstructionSet.JMP
     + InstructionSet.NEG
     + InstructionSet.NOP

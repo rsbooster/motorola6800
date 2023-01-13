@@ -28,6 +28,7 @@
 		8CF0A1972970C3B600A03033 /* NEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A1962970C3B600A03033 /* NEG.swift */; };
 		8CF0A4432972189000A03033 /* LDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A4422972189000A03033 /* LDS.swift */; };
 		8CF0A44529721B6000A03033 /* LDX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A44429721B6000A03033 /* LDX.swift */; };
+		8CF0A44729721C5400A03033 /* LSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A44629721C5400A03033 /* LSR.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		8CF0A1962970C3B600A03033 /* NEG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEG.swift; sourceTree = "<group>"; };
 		8CF0A4422972189000A03033 /* LDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDS.swift; sourceTree = "<group>"; };
 		8CF0A44429721B6000A03033 /* LDX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDX.swift; sourceTree = "<group>"; };
+		8CF0A44629721C5400A03033 /* LSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSR.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				8CB86ADA29686641007823D0 /* LDA.swift */,
 				8CF0A4422972189000A03033 /* LDS.swift */,
 				8CF0A44429721B6000A03033 /* LDX.swift */,
+				8CF0A44629721C5400A03033 /* LSR.swift */,
 				8CF0A1962970C3B600A03033 /* NEG.swift */,
 				8C0CC2012968D6D6009BE6FB /* NOP.swift */,
 				8CB86ADC29686672007823D0 /* WAI.swift */,
@@ -311,6 +314,7 @@
 				8CB86ADB29686641007823D0 /* LDA.swift in Sources */,
 				8CB86AA629683776007823D0 /* Motorola6800App.swift in Sources */,
 				8C0CC2022968D6D6009BE6FB /* NOP.swift in Sources */,
+				8CF0A44729721C5400A03033 /* LSR.swift in Sources */,
 				8CB86ADD29686672007823D0 /* WAI.swift in Sources */,
 				8C755A362969AF0A00827729 /* BRA.swift in Sources */,
 				8CB86AD72968652E007823D0 /* InstructionSet.swift in Sources */,
