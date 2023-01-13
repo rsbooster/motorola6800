@@ -9,6 +9,7 @@ extension InstructionSet {
     + InstructionSet.COM
     + InstructionSet.DAA
     + InstructionSet.LDA
+    + InstructionSet.LDS
     + InstructionSet.JMP
     + InstructionSet.NEG
     + InstructionSet.NOP

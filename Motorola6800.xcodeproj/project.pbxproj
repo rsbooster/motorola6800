@@ -26,6 +26,7 @@
 		8CB86ADB29686641007823D0 /* LDA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86ADA29686641007823D0 /* LDA.swift */; };
 		8CB86ADD29686672007823D0 /* WAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86ADC29686672007823D0 /* WAI.swift */; };
 		8CF0A1972970C3B600A03033 /* NEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A1962970C3B600A03033 /* NEG.swift */; };
+		8CF0A4432972189000A03033 /* LDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A4422972189000A03033 /* LDS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		8CB86ADA29686641007823D0 /* LDA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDA.swift; sourceTree = "<group>"; };
 		8CB86ADC29686672007823D0 /* WAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAI.swift; sourceTree = "<group>"; };
 		8CF0A1962970C3B600A03033 /* NEG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEG.swift; sourceTree = "<group>"; };
+		8CF0A4422972189000A03033 /* LDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDS.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				8C755A2F29699ABC00827729 /* DAA.swift */,
 				8C755A312969A39B00827729 /* JMP.swift */,
 				8CB86ADA29686641007823D0 /* LDA.swift */,
+				8CF0A4422972189000A03033 /* LDS.swift */,
 				8CF0A1962970C3B600A03033 /* NEG.swift */,
 				8C0CC2012968D6D6009BE6FB /* NOP.swift */,
 				8CB86ADC29686672007823D0 /* WAI.swift */,
@@ -297,6 +300,7 @@
 				8CB86AD0296837B5007823D0 /* Model.swift in Sources */,
 				8C755A38296CDF4100827729 /* COM.swift in Sources */,
 				8CB86AD9296865DA007823D0 /* ABA.swift in Sources */,
+				8CF0A4432972189000A03033 /* LDS.swift in Sources */,
 				8CB86AD4296844B8007823D0 /* Execution.swift in Sources */,
 				8C755A3029699ABC00827729 /* DAA.swift in Sources */,
 				8CB86AA829683776007823D0 /* ContentView.swift in Sources */,

@@ -40,6 +40,7 @@ struct Instruction {
     case JMP
     case LDAA
     case LDAB
+    case LDS
     case NEGA
     case NEGB
     case NEG
@@ -54,7 +55,44 @@ struct Instruction {
   let action: (inout Processor, inout Memory) -> Void
 }
 
-typealias Memory = [UInt8]
+struct Memory {
+  private var content: [UInt8]
+  private let romSize: UInt16
+  
+  init(
+    content: [UInt8],
+    romSize: UInt16
+  ) {
+    self.content = content
+    self.romSize = romSize
+  }
+  
+  func readByte(_ address: UInt16) -> UInt8 {
+    content[Int(address)]
+  }
+  
+  func readWord(_ address: UInt16) -> UInt16 {
+    UInt16(readByte(address)) << 8 + UInt16(readByte(address + 1))
+  }
+  
+  mutating func writeByte(address: UInt16, value: UInt8) {
+    guard address < (0xFFFF - romSize) else {
+      return
+    }
+    content[Int(address)] = value
+  }
+  
+  mutating func pushByte(stackPointer: inout UInt16, value: UInt8) {
+    writeByte(address: stackPointer, value: value)
+    stackPointer -= 1
+  }
+  
+  mutating func pushWord(stackPointer: inout UInt16, value: UInt16) {
+    writeByte(address: stackPointer, value: value.lower)
+    writeByte(address: stackPointer - 1, value: value.upper)
+    stackPointer -= 2
+  }
+}
 
 extension Processor: CustomStringConvertible {
   var description: String {

@@ -26,7 +26,7 @@ func execute() {
   }
 }
 
-private let initialMemory: [UInt8] = {
+private let initialMemory: Memory = {
   let memoryStart: [UInt8] = [
     0x86, 0xFF,
     0xC6, 0xFE,
@@ -40,6 +40,8 @@ private let initialMemory: [UInt8] = {
     
     0x24, 0xFC,
     
+    0x8E, 0x80, 0x00,
+    
     0x3E,
   ]
   
@@ -47,7 +49,9 @@ private let initialMemory: [UInt8] = {
     0x00, 0x00
   ]
   
-  return memoryStart
+  let content = memoryStart
     + Array(repeating: 0, count: 65536 - memoryStart.count - memoryEnd.count)
     + memoryEnd
+  
+  return Memory(content: content, romSize: 1024)
 }()

@@ -1,22 +1,5 @@
 import Foundation
 
-extension Array where Element == UInt8 {
-  func readByte(_ address: UInt16) -> UInt8 {
-      self[Int(address)]
-  }
-  
-  func readWord(_ address: UInt16) -> UInt16 {
-    UInt16(readByte(address)) << 8 + UInt16(readByte(address + 1))
-  }
-  
-  mutating func writeByte(address: UInt16, value: UInt8) {
-    guard address < 0xFC00 else {
-      return
-    }
-    self[Int(address)] = value
-  }
-}
-
 extension UInt16 {
   func addingSigned(_ signed: UInt8) -> UInt16 {
     let negative = signed[7]
