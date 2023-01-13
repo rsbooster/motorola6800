@@ -41,6 +41,7 @@ struct Instruction {
     case LDAA
     case LDAB
     case LDS
+    case LDX
     case NEGA
     case NEGB
     case NEG
