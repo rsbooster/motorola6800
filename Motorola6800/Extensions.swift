@@ -30,6 +30,12 @@ extension BinaryInteger {
   }
 }
 
+extension Bool {
+  var asInt: UInt8 {
+    self ? 1 : 0
+  }
+}
+
 func isCarry(_ a: Bool, _ b: Bool, _ r: Bool) -> Bool {
   (a && b) || (b && !r) || (!r && a)
 }

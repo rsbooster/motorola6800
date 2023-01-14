@@ -4,6 +4,7 @@ enum InstructionSet {}
 
 extension InstructionSet {
   static let all = InstructionSet.ABA
+    + InstructionSet.ADD
     + InstructionSet.BCC
     + InstructionSet.BRA
     + InstructionSet.COM

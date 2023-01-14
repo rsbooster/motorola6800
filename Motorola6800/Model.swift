@@ -31,6 +31,8 @@ struct Instruction {
   
   enum Mnemonic {
     case ABA
+    case ADDA
+    case ADDB
     case BCC
     case BRA
     case COM
