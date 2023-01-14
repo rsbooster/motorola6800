@@ -26,8 +26,7 @@ extension InstructionSet {
       action: { p, m in
         let (A, B, X, PC, SP, CC) = p.tuple()
         
-        let address = m.readByte(PC + 1)
-        let R = m.readWord(UInt16(address))
+        let R: UInt16 = m.readOperandDirect(PC + 1)
         
         p.updateCC(result: R)
         
@@ -43,8 +42,7 @@ extension InstructionSet {
       action: { p, m in
         let (A, B, X, PC, SP, CC) = p.tuple()
         
-        let address = m.readWord(PC + 1)
-        let R = m.readWord(address)
+        let R: UInt16 = m.readOperandExtended(PC + 1)
         
         p.updateCC(result: R)
         
@@ -60,9 +58,7 @@ extension InstructionSet {
       action: { p, m in
         let (A, B, X, PC, SP, CC) = p.tuple()
         
-        let offset = m.readByte(PC + 1)
-        let address = X + UInt16(offset)
-        let R = m.readWord(address)
+        let R: UInt16 = m.readOperandIndexed(PC + 1, X: X)
         
         p.updateCC(result: R)
         

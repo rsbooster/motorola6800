@@ -98,6 +98,70 @@ struct Memory {
   }
 }
 
+extension Memory {
+  func readOperandDirect(_ address: UInt16) -> UInt8 {
+    readOperandDirect8(address).value
+  }
+  
+  func readOperandDirect8(_ address: UInt16) -> (value: UInt8, address: UInt16) {
+    let ref = readByte(address)
+    let value = readByte(UInt16(ref))
+    return (value, UInt16(ref))
+  }
+  
+  func readOperandDirect(_ address: UInt16) -> UInt16 {
+    readOperandDirect16(address).value
+  }
+  
+  func readOperandDirect16(_ address: UInt16) -> (value: UInt16, address: UInt16) {
+    let ref = readByte(address)
+    let value = readWord(UInt16(ref))
+    return (value, UInt16(ref))
+  }
+  
+  func readOperandExtended(_ address: UInt16) -> UInt8 {
+    readOperandExtended8(address).value
+  }
+  
+  func readOperandExtended8(_ address: UInt16) -> (value: UInt8, address: UInt16) {
+    let ref = readWord(address)
+    let value = readByte(ref)
+    return (value, ref)
+  }
+  
+  func readOperandExtended(_ address: UInt16) -> UInt16 {
+    readOperandExtended16(address).value
+  }
+  
+  func readOperandExtended16(_ address: UInt16) -> (value: UInt16, address: UInt16) {
+    let ref = readWord(address)
+    let value = readWord(ref)
+    return (value, ref)
+  }
+  
+  func readOperandIndexed(_ address: UInt16, X: UInt16) -> UInt8 {
+    readOperandIndexed8(address, X: X).value
+  }
+  
+  func readOperandIndexed8(_ address: UInt16, X: UInt16) -> (value: UInt8, address: UInt16) {
+    let offset = readByte(address)
+    let ref = X + UInt16(offset)
+    let value = readByte(ref)
+    return (value, ref)
+  }
+  
+  func readOperandIndexed(_ address: UInt16, X: UInt16) -> UInt16 {
+    readOperandIndexed16(address, X: X).value
+  }
+  
+  func readOperandIndexed16(_ address: UInt16, X: UInt16) -> (value: UInt16, address: UInt16) {
+    let offset = readByte(address)
+    let ref = X + UInt16(offset)
+    let value = readWord(ref)
+    return (value, ref)
+  }
+}
+
 extension Processor: CustomStringConvertible {
   var description: String {
     String(

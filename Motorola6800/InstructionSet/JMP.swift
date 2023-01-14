@@ -5,7 +5,7 @@ extension InstructionSet {
     Instruction(
       opCode: 0x7E,
       mnemonic: .JMP,
-      addressingMode: .extended,
+      addressingMode: .immediate,
       executionTime: 3,
       action: { p, m in
         let (A, B, X, PC, SP, CC) = p.tuple()
@@ -18,14 +18,12 @@ extension InstructionSet {
     Instruction(
       opCode: 0x6E,
       mnemonic: .JMP,
-      addressingMode: .extended,
+      addressingMode: .indexed,
       executionTime: 3,
       action: { p, m in
         let (A, B, X, PC, SP, CC) = p.tuple()
         
-        let offset = m.readByte(PC + 1)
-        
-        p.PC = X + UInt16(offset)
+        p.PC = m.readOperandIndexed(PC + 1, X: X)
       }
     ),
   ]
