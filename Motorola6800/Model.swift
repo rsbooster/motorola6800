@@ -191,10 +191,10 @@ extension Processor: CustomStringConvertible {
 
 extension Processor.ConditionCodes {
   var asByte: UInt8 {
-    (H ? 0x1 : 0) |
-    (N ? 0x2 : 0) |
+    (H ? 0x10 : 0) |
+    (N ? 0x8 : 0) |
     (Z ? 0x4 : 0) |
-    (V ? 0x8 : 0) |
-    (C ? 0x10 : 0)
+    (V ? 0x2 : 0) |
+    (C ? 0x1 : 0)
   }
 }
