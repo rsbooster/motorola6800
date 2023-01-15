@@ -36,7 +36,20 @@ struct Instruction {
     case ANDA
     case ANDB
     case BCC
+    case BCS
+    case BEQ
+    case BGE
+    case BGT
+    case BHI
+    case BLE
+    case BLS
+    case BLT
+    case BMI
+    case BNE
+    case BPL
     case BRA
+    case BVC
+    case BVS
     case COM
     case COMA
     case COMB

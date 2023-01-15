@@ -30,7 +30,7 @@ extension BinaryInteger {
   }
 }
 
-extension Bool {
+extension Bool {  
   var asInt: UInt8 {
     self ? 1 : 0
   }
