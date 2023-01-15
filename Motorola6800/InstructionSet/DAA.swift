@@ -48,7 +48,7 @@ extension InstructionSet {
           fatalError()
         }
         
-        let (R, _) = A.addingReportingOverflow(addition)
+        let R = A &+ addition
         
         p.CC.N = R[7]
         p.CC.Z = R == 0

@@ -10,7 +10,7 @@ extension InstructionSet {
       action: { p, _ in
         let (A, B, X, PC, SP, CC) = p.tuple()
         
-        let (R, _) = A.addingReportingOverflow(B)
+        let R = A &+ B
         
         p.CC = Processor.ConditionCodes(
           H: isCarry(A[3], B[3], R[3]),

@@ -10,7 +10,7 @@ extension InstructionSet {
       action: { p, _ in
         let (A, B, X, PC, SP, CC) = p.tuple()
         
-        let (R, _) = UInt8(0).subtractingReportingOverflow(A)
+        let R = 0 &- A
         
         p.updateCC(result: R)
         
@@ -26,7 +26,7 @@ extension InstructionSet {
       action: { p, _ in
         let (A, B, X, PC, SP, CC) = p.tuple()
         
-        let (R, _) = UInt8(0).subtractingReportingOverflow(B)
+        let R = 0 &- B
         
         p.updateCC(result: R)
         

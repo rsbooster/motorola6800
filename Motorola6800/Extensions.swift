@@ -5,8 +5,7 @@ extension UInt16 {
     let negative = signed[7]
     let mask: UInt16 = negative ? 0xFF00 : 0x0
     let large = UInt16(signed) | mask
-    let (result, _) = self.addingReportingOverflow(large)
-    return result
+    return self &+ large
   }
   
   var upper: UInt8 {
@@ -27,12 +26,6 @@ extension Processor {
 extension BinaryInteger {
   subscript (index: UInt8) -> Bool {
     self & (0x1 << index) != 0
-  }
-}
-
-extension Bool {  
-  var asInt: UInt8 {
-    self ? 1 : 0
   }
 }
 
