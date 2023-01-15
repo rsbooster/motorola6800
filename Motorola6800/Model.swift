@@ -33,6 +33,8 @@ struct Instruction {
     case ABA
     case ADDA
     case ADDB
+    case ANDA
+    case ANDB
     case BCC
     case BRA
     case COM
