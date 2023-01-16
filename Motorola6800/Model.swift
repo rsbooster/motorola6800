@@ -35,6 +35,12 @@ struct Instruction {
     case ADDB
     case ANDA
     case ANDB
+    case ASL
+    case ASLA
+    case ASLB
+    case ASR
+    case ASRA
+    case ASRB
     case BCC
     case BCS
     case BEQ

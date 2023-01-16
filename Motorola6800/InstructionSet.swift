@@ -6,6 +6,8 @@ extension InstructionSet {
   static let all = InstructionSet.ABA
     + InstructionSet.ADD
     + InstructionSet.AND
+    + InstructionSet.ASL
+    + InstructionSet.ASR
     + InstructionSet.BRA
     + InstructionSet.COM
     + InstructionSet.DAA
