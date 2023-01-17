@@ -56,6 +56,7 @@ struct Instruction {
     case BRA
     case BVC
     case BVS
+    case CBA
     case COM
     case COMA
     case COMB

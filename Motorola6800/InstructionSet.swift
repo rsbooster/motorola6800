@@ -9,6 +9,7 @@ extension InstructionSet {
     + InstructionSet.ASL
     + InstructionSet.ASR
     + InstructionSet.BRA
+    + InstructionSet.CBA
     + InstructionSet.COM
     + InstructionSet.DAA
     + InstructionSet.LDA
