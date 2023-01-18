@@ -9,6 +9,8 @@ extension InstructionSet {
     + InstructionSet.ASL
     + InstructionSet.ASR
     + InstructionSet.BRA
+    + InstructionSet.BIT
+    + InstructionSet.BSR
     + InstructionSet.CBA
     + InstructionSet.COM
     + InstructionSet.DAA
@@ -19,5 +21,6 @@ extension InstructionSet {
     + InstructionSet.JMP
     + InstructionSet.NEG
     + InstructionSet.NOP
+    + InstructionSet.RTS
     + InstructionSet.WAI
 }

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8C0CC2022968D6D6009BE6FB /* NOP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0CC2012968D6D6009BE6FB /* NOP.swift */; };
+		8C43E0A32978ACCE00C6AE33 /* BIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43E0A22978ACCE00C6AE33 /* BIT.swift */; };
+		8C43E0A72978AEF500C6AE33 /* BSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43E0A62978AEF500C6AE33 /* BSR.swift */; };
+		8C43E0A92978B08F00C6AE33 /* RTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43E0A82978B08F00C6AE33 /* RTS.swift */; };
 		8C755A3029699ABC00827729 /* DAA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C755A2F29699ABC00827729 /* DAA.swift */; };
 		8C755A322969A39B00827729 /* JMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C755A312969A39B00827729 /* JMP.swift */; };
 		8C755A362969AF0A00827729 /* BRA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C755A352969AF0A00827729 /* BRA.swift */; };
@@ -54,6 +57,9 @@
 
 /* Begin PBXFileReference section */
 		8C0CC2012968D6D6009BE6FB /* NOP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NOP.swift; sourceTree = "<group>"; };
+		8C43E0A22978ACCE00C6AE33 /* BIT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIT.swift; sourceTree = "<group>"; };
+		8C43E0A62978AEF500C6AE33 /* BSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSR.swift; sourceTree = "<group>"; };
+		8C43E0A82978B08F00C6AE33 /* RTS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTS.swift; sourceTree = "<group>"; };
 		8C755A2F29699ABC00827729 /* DAA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAA.swift; sourceTree = "<group>"; };
 		8C755A312969A39B00827729 /* JMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMP.swift; sourceTree = "<group>"; };
 		8C755A352969AF0A00827729 /* BRA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRA.swift; sourceTree = "<group>"; };
@@ -168,7 +174,9 @@
 				8CF0A5E52974BA1800A03033 /* AND.swift */,
 				8CF0A8A329760EB700A03033 /* ASL.swift */,
 				8CF0A8A52976104500A03033 /* ASR.swift */,
+				8C43E0A22978ACCE00C6AE33 /* BIT.swift */,
 				8C755A352969AF0A00827729 /* BRA.swift */,
+				8C43E0A62978AEF500C6AE33 /* BSR.swift */,
 				8CF0A8E1297765E000A03033 /* CBA.swift */,
 				8C755A37296CDF4100827729 /* COM.swift */,
 				8C755A2F29699ABC00827729 /* DAA.swift */,
@@ -179,6 +187,7 @@
 				8CF0A44629721C5400A03033 /* LSR.swift */,
 				8CF0A1962970C3B600A03033 /* NEG.swift */,
 				8C0CC2012968D6D6009BE6FB /* NOP.swift */,
+				8C43E0A82978B08F00C6AE33 /* RTS.swift */,
 				8CB86ADC29686672007823D0 /* WAI.swift */,
 			);
 			path = InstructionSet;
@@ -325,9 +334,11 @@
 				8CF0A8A62976104500A03033 /* ASR.swift in Sources */,
 				8C755A3029699ABC00827729 /* DAA.swift in Sources */,
 				8CB86AA829683776007823D0 /* ContentView.swift in Sources */,
+				8C43E0A32978ACCE00C6AE33 /* BIT.swift in Sources */,
 				8CB86AD22968444B007823D0 /* Extensions.swift in Sources */,
 				8CB86ADB29686641007823D0 /* LDA.swift in Sources */,
 				8CB86AA629683776007823D0 /* Motorola6800App.swift in Sources */,
+				8C43E0A72978AEF500C6AE33 /* BSR.swift in Sources */,
 				8C0CC2022968D6D6009BE6FB /* NOP.swift in Sources */,
 				8CF0A44729721C5400A03033 /* LSR.swift in Sources */,
 				8CB86ADD29686672007823D0 /* WAI.swift in Sources */,
@@ -337,6 +348,7 @@
 				8CF0A44529721B6000A03033 /* LDX.swift in Sources */,
 				8CF0A8E2297765E000A03033 /* CBA.swift in Sources */,
 				8C755A322969A39B00827729 /* JMP.swift in Sources */,
+				8C43E0A92978B08F00C6AE33 /* RTS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

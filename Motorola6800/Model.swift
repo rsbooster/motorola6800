@@ -47,6 +47,8 @@ struct Instruction {
     case BGE
     case BGT
     case BHI
+    case BITA
+    case BITB
     case BLE
     case BLS
     case BLT
@@ -54,6 +56,7 @@ struct Instruction {
     case BNE
     case BPL
     case BRA
+    case BSR
     case BVC
     case BVS
     case CBA
@@ -73,6 +76,7 @@ struct Instruction {
     case NEGB
     case NEG
     case NOP
+    case RTS
     case WAI
   }
   
@@ -119,6 +123,16 @@ struct Memory {
     writeByte(address: stackPointer, value: value.lower)
     writeByte(address: stackPointer - 1, value: value.upper)
     stackPointer -= 2
+  }
+  
+  mutating func pullByte(stackPointer: inout UInt16) -> UInt8 {
+    stackPointer += 1
+    return readByte(stackPointer)
+  }
+  
+  mutating func pullWord(stackPointer: inout UInt16) -> UInt16 {
+    stackPointer += 2
+    return readWord(stackPointer)
   }
 }
 
