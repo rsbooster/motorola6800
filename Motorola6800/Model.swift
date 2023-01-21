@@ -3,6 +3,7 @@ import Foundation
 struct Processor {
   struct ConditionCodes {
     var H: Bool
+    var I: Bool
     var N: Bool
     var Z: Bool
     var V: Bool
@@ -60,6 +61,12 @@ struct Instruction {
     case BVC
     case BVS
     case CBA
+    case CLC
+    case CLI
+    case CLR
+    case CLRA
+    case CLRB
+    case CLV
     case COM
     case COMA
     case COMB
@@ -203,16 +210,17 @@ extension Memory {
 extension Processor: CustomStringConvertible {
   var description: String {
     String(
-      format: "A:%02X B:%02X X:%04X PC:%04X SP:%04X  H:%X N:%X Z:%X V:%X C:%X",
+      format: "A:%02X B:%02X X:%04X PC:%04X SP:%04X  H:%X I:%X N:%X Z:%X V:%X C:%X",
       A, B, X, PC, SP,
-      CC.H, CC.N, CC.Z, CC.V, CC.C
+      CC.H, CC.I, CC.N, CC.Z, CC.V, CC.C
     )
   }
 }
 
 extension Processor.ConditionCodes {
   var asByte: UInt8 {
-    (H ? 0x10 : 0) |
+    (H ? 0x20 : 0) |
+    (I ? 0x10 : 0) |
     (N ? 0x8 : 0) |
     (Z ? 0x4 : 0) |
     (V ? 0x2 : 0) |

@@ -10,7 +10,7 @@ func execute() {
     X: 0,
     PC: 0,
     SP: 0,
-    CC: .init(H: false, N: false, Z: false, V: false, C: false)
+    CC: .init(H: false, I: false, N: false, Z: false, V: false, C: false)
   )
   var memory = initialMemory
   

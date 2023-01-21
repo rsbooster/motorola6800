@@ -12,6 +12,10 @@ extension InstructionSet {
     + InstructionSet.BIT
     + InstructionSet.BSR
     + InstructionSet.CBA
+    + InstructionSet.CLC
+    + InstructionSet.CLI
+    + InstructionSet.CLR
+    + InstructionSet.CLV
     + InstructionSet.COM
     + InstructionSet.DAA
     + InstructionSet.LDA

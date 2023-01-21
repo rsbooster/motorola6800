@@ -14,6 +14,7 @@ extension InstructionSet {
         
         p.CC = Processor.ConditionCodes(
           H: isCarry(A[3], B[3], R[3]),
+          I: p.CC.I,
           N: R[7],
           Z: R == 0,
           V: isOverflow(A[7], B[7], R[7]),
