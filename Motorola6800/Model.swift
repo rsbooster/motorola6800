@@ -67,6 +67,8 @@ struct Instruction {
     case CLRA
     case CLRB
     case CLV
+    case CMPA
+    case CMPB
     case COM
     case COMA
     case COMB
