@@ -20,6 +20,7 @@ extension InstructionSet {
     + InstructionSet.COM
     + InstructionSet.CPX
     + InstructionSet.DAA
+    + InstructionSet.DEC
     + InstructionSet.LDA
     + InstructionSet.LDS
     + InstructionSet.LDX

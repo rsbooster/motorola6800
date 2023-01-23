@@ -74,6 +74,9 @@ struct Instruction {
     case COMB
     case CPX
     case DAA
+    case DEC
+    case DECA
+    case DECB
     case JMP
     case LDAA
     case LDAB
