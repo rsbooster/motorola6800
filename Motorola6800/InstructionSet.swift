@@ -18,6 +18,7 @@ extension InstructionSet {
     + InstructionSet.CLV
     + InstructionSet.CMP
     + InstructionSet.COM
+    + InstructionSet.CPX
     + InstructionSet.DAA
     + InstructionSet.LDA
     + InstructionSet.LDS

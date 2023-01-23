@@ -72,6 +72,7 @@ struct Instruction {
     case COM
     case COMA
     case COMB
+    case CPX
     case DAA
     case JMP
     case LDAA
