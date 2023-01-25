@@ -32,6 +32,8 @@ struct Instruction {
   
   enum Mnemonic {
     case ABA
+    case ADCA
+    case ADCB
     case ADDA
     case ADDB
     case ANDA
@@ -79,7 +81,15 @@ struct Instruction {
     case DECB
     case DES
     case DEX
+    case EORA
+    case EORB
+    case INC
+    case INCA
+    case INCB
+    case INS
+    case INX
     case JMP
+    case JSR
     case LDAA
     case LDAB
     case LDS

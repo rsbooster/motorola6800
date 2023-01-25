@@ -5,6 +5,7 @@ enum InstructionSet {}
 extension InstructionSet {
   static let all = InstructionSet.ABA
     + InstructionSet.ADD
+    + InstructionSet.ADC
     + InstructionSet.AND
     + InstructionSet.ASL
     + InstructionSet.ASR
@@ -23,11 +24,16 @@ extension InstructionSet {
     + InstructionSet.DEC
     + InstructionSet.DES
     + InstructionSet.DEX
+    + InstructionSet.EOR
+    + InstructionSet.INC
+    + InstructionSet.INS
+    + InstructionSet.INX
+    + InstructionSet.JMP
+    + InstructionSet.JSR
     + InstructionSet.LDA
     + InstructionSet.LDS
     + InstructionSet.LDX
     + InstructionSet.LSR
-    + InstructionSet.JMP
     + InstructionSet.NEG
     + InstructionSet.NOP
     + InstructionSet.RTS

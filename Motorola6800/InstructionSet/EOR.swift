@@ -1,133 +1,141 @@
 import Foundation
 
 extension InstructionSet {
-  static let CMP = [
+  static let EOR = [
     Instruction(
-      opCode: 0x81,
-      mnemonic: .CMPA,
+      opCode: 0x88,
+      mnemonic: .EORA,
       addressingMode: .immediate,
       executionTime: 2,
       action: { p, m in
         let (A, _, _, PC, _, _) = p.tuple()
         
         let M = m.readByte(PC + 1)
-        let R = A &- M
+        let R = A ^ M
         
-        p.updateCC(A: R, B: M, R: A)
+        p.CC.update(R: R)
         
+        p.A = R
         p.PC += 2
       }
     ),
     Instruction(
-      opCode: 0x91,
-      mnemonic: .CMPA,
+      opCode: 0x98,
+      mnemonic: .EORA,
       addressingMode: .direct,
       executionTime: 3,
       action: { p, m in
         let (A, _, _, PC, _, _) = p.tuple()
         
         let M: UInt8 = m.readOperandDirect(PC + 1)
-        let R = A &- M
+        let R = A ^ M
         
-        p.updateCC(A: R, B: M, R: A)
+        p.CC.update(R: R)
         
+        p.A = R
         p.PC += 2
       }
     ),
     Instruction(
-      opCode: 0xB1,
-      mnemonic: .CMPA,
+      opCode: 0xB8,
+      mnemonic: .EORA,
       addressingMode: .extended,
       executionTime: 4,
       action: { p, m in
         let (A, _, _, PC, _, _) = p.tuple()
         
         let M: UInt8 = m.readOperandExtended(PC + 1)
-        let R = A &- M
+        let R = A ^ M
         
-        p.updateCC(A: R, B: M, R: A)
+        p.CC.update(R: R)
         
+        p.A = R
         p.PC += 3
       }
     ),
     Instruction(
-      opCode: 0xA1,
-      mnemonic: .CMPA,
+      opCode: 0xA8,
+      mnemonic: .EORA,
       addressingMode: .indexed,
-      executionTime: 7,
+      executionTime: 5,
       action: { p, m in
         let (A, _, X, PC, _, _) = p.tuple()
         
         let M: UInt8 = m.readOperandIndexed(PC + 1, X: X)
-        let R = A &- M
+        let R = A ^ M
         
-        p.updateCC(A: R, B: M, R: A)
+        p.CC.update(R: R)
         
+        p.A = R
         p.PC += 2
       }
     ),
     
     Instruction(
-      opCode: 0xC1,
-      mnemonic: .CMPB,
+      opCode: 0xC8,
+      mnemonic: .EORB,
       addressingMode: .immediate,
       executionTime: 2,
       action: { p, m in
         let (_, B, _, PC, _, _) = p.tuple()
         
         let M = m.readByte(PC + 1)
-        let R = B &- M
+        let R = B ^ M
         
-        p.updateCC(A: R, B: M, R: B)
+        p.CC.update(R: R)
         
+        p.B = R
         p.PC += 2
       }
     ),
     Instruction(
-      opCode: 0xD1,
-      mnemonic: .CMPB,
+      opCode: 0xD8,
+      mnemonic: .EORB,
       addressingMode: .direct,
       executionTime: 3,
       action: { p, m in
         let (_, B, _, PC, _, _) = p.tuple()
         
         let M: UInt8 = m.readOperandDirect(PC + 1)
-        let R = B &- M
+        let R = B ^ M
         
-        p.updateCC(A: R, B: M, R: B)
+        p.CC.update(R: R)
         
+        p.B = R
         p.PC += 2
       }
     ),
     Instruction(
-      opCode: 0xF1,
-      mnemonic: .CMPB,
+      opCode: 0xF8,
+      mnemonic: .EORB,
       addressingMode: .extended,
       executionTime: 4,
       action: { p, m in
         let (_, B, _, PC, _, _) = p.tuple()
         
         let M: UInt8 = m.readOperandExtended(PC + 1)
-        let R = B &- M
+        let R = B ^ M
         
-        p.updateCC(A: R, B: M, R: B)
+        p.CC.update(R: R)
         
+        p.B = R
         p.PC += 3
       }
     ),
     Instruction(
-      opCode: 0xE1,
-      mnemonic: .CMPB,
+      opCode: 0xE8,
+      mnemonic: .EORB,
       addressingMode: .indexed,
-      executionTime: 7,
+      executionTime: 5,
       action: { p, m in
         let (_, B, X, PC, _, _) = p.tuple()
         
         let M: UInt8 = m.readOperandIndexed(PC + 1, X: X)
-        let R = B &- M
+        let R = B ^ M
         
-        p.updateCC(A: R, B: M, R: B)
+        p.CC.update(R: R)
         
+        p.B = R
         p.PC += 2
       }
     ),
@@ -135,11 +143,10 @@ extension InstructionSet {
 }
 
 
-private extension Processor {
-  mutating func updateCC(A: UInt8, B: UInt8, R: UInt8) {
-    CC.N = R[7]
-    CC.Z = R == 0
-    CC.V = isOverflow(A[7], B[7], R[7])
-    CC.C = isCarry(A[7], B[7], R[7])
+private extension Processor.ConditionCodes {
+  mutating func update(R: UInt8) {
+    N = R[7]
+    Z = R == 0
+    V = false
   }
 }

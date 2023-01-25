@@ -20,7 +20,7 @@ extension InstructionSet {
       addressingMode: .direct,
       executionTime: 4,
       action: { p, m in
-        let (M, _) = m.readOperandDirect16(p.PC + 1)
+        let M: UInt16 = m.readOperandDirect(p.PC + 1)
         p.cpx(M: M)
         
         p.PC += 2
@@ -32,7 +32,7 @@ extension InstructionSet {
       addressingMode: .extended,
       executionTime: 5,
       action: { p, m in
-        let (M, _) = m.readOperandExtended16(p.PC + 1)
+        let M: UInt16 = m.readOperandExtended(p.PC + 1)
         p.cpx(M: M)
         
         p.PC += 3
@@ -46,7 +46,7 @@ extension InstructionSet {
       action: { p, m in
         let (_, _, X, PC, _, _) = p.tuple()
         
-        let (M, _) = m.readOperandIndexed16(PC + 1, X: X)
+        let M: UInt16 = m.readOperandIndexed(PC + 1, X: X)
         p.cpx(M: M)
         
         p.PC += 2
