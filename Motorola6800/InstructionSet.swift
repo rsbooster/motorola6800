@@ -21,6 +21,8 @@ extension InstructionSet {
     + InstructionSet.CPX
     + InstructionSet.DAA
     + InstructionSet.DEC
+    + InstructionSet.DES
+    + InstructionSet.DEX
     + InstructionSet.LDA
     + InstructionSet.LDS
     + InstructionSet.LDX

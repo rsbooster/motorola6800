@@ -77,6 +77,8 @@ struct Instruction {
     case DEC
     case DECA
     case DECB
+    case DES
+    case DEX
     case JMP
     case LDAA
     case LDAB

@@ -34,6 +34,8 @@
 		8CB86ADB29686641007823D0 /* LDA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86ADA29686641007823D0 /* LDA.swift */; };
 		8CB86ADD29686672007823D0 /* WAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86ADC29686672007823D0 /* WAI.swift */; };
 		8CEBEB1F297F4DC900FE9D0A /* DEC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB1E297F4DC900FE9D0A /* DEC.swift */; };
+		8CEBEB212980ABEA00FE9D0A /* DES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB202980ABEA00FE9D0A /* DES.swift */; };
+		8CEBEB232980AC4100FE9D0A /* DEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB222980AC4100FE9D0A /* DEX.swift */; };
 		8CF0A1972970C3B600A03033 /* NEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A1962970C3B600A03033 /* NEG.swift */; };
 		8CF0A4432972189000A03033 /* LDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A4422972189000A03033 /* LDS.swift */; };
 		8CF0A44529721B6000A03033 /* LDX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A44429721B6000A03033 /* LDX.swift */; };
@@ -93,6 +95,8 @@
 		8CB86ADA29686641007823D0 /* LDA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDA.swift; sourceTree = "<group>"; };
 		8CB86ADC29686672007823D0 /* WAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAI.swift; sourceTree = "<group>"; };
 		8CEBEB1E297F4DC900FE9D0A /* DEC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEC.swift; sourceTree = "<group>"; };
+		8CEBEB202980ABEA00FE9D0A /* DES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DES.swift; sourceTree = "<group>"; };
+		8CEBEB222980AC4100FE9D0A /* DEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEX.swift; sourceTree = "<group>"; };
 		8CF0A1962970C3B600A03033 /* NEG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEG.swift; sourceTree = "<group>"; };
 		8CF0A4422972189000A03033 /* LDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDS.swift; sourceTree = "<group>"; };
 		8CF0A44429721B6000A03033 /* LDX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDX.swift; sourceTree = "<group>"; };
@@ -201,6 +205,8 @@
 				8C43E2BF297E0C8D00C6AE33 /* CPX.swift */,
 				8C755A2F29699ABC00827729 /* DAA.swift */,
 				8CEBEB1E297F4DC900FE9D0A /* DEC.swift */,
+				8CEBEB202980ABEA00FE9D0A /* DES.swift */,
+				8CEBEB222980AC4100FE9D0A /* DEX.swift */,
 				8C755A312969A39B00827729 /* JMP.swift */,
 				8CB86ADA29686641007823D0 /* LDA.swift */,
 				8CF0A4422972189000A03033 /* LDS.swift */,
@@ -363,11 +369,13 @@
 				8C43E2C0297E0C8D00C6AE33 /* CPX.swift in Sources */,
 				8C43E0AB297C3D0700C6AE33 /* CLC.swift in Sources */,
 				8CB86AA629683776007823D0 /* Motorola6800App.swift in Sources */,
+				8CEBEB232980AC4100FE9D0A /* DEX.swift in Sources */,
 				8C43E0B1297C3FD100C6AE33 /* CLV.swift in Sources */,
 				8C43E0A72978AEF500C6AE33 /* BSR.swift in Sources */,
 				8C0CC2022968D6D6009BE6FB /* NOP.swift in Sources */,
 				8CF0A44729721C5400A03033 /* LSR.swift in Sources */,
 				8CB86ADD29686672007823D0 /* WAI.swift in Sources */,
+				8CEBEB212980ABEA00FE9D0A /* DES.swift in Sources */,
 				8C755A362969AF0A00827729 /* BRA.swift in Sources */,
 				8C43E0B3297C40AB00C6AE33 /* CMP.swift in Sources */,
 				8CB86AD72968652E007823D0 /* InstructionSet.swift in Sources */,
