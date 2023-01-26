@@ -10,6 +10,10 @@ struct Processor {
     var C: Bool
   }
   
+  struct Emulated {
+    var waitingForInterrupt: Bool
+  }
+  
   var A: UInt8
   var B: UInt8
   var X: UInt16
@@ -18,6 +22,8 @@ struct Processor {
   var SP: UInt16
   
   var CC: ConditionCodes
+  
+  var emulated: Emulated
 }
 
 struct Instruction {

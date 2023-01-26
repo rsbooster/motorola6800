@@ -10,19 +10,23 @@ func execute() {
     X: 0,
     PC: 0,
     SP: 0,
-    CC: .init(H: false, I: false, N: false, Z: false, V: false, C: false)
+    CC: .init(H: false, I: false, N: false, Z: false, V: false, C: false),
+    emulated: .init(waitingForInterrupt: false)
   )
   var memory = initialMemory
   
   processor.PC = UInt16(memory.readWord(0xFFFE))
   
   while(true) {
-    print(processor.description)
-    
-    let opCode = memory.readByte(processor.PC)
-    let instruction = instructionMap[opCode]!
-    
-    instruction.action(&processor, &memory)
+    if !processor.emulated.waitingForInterrupt {
+      print(processor.description)
+      
+      let opCode = memory.readByte(processor.PC)
+      let instruction = instructionMap[opCode]!
+      
+      instruction.action(&processor, &memory)
+    }
+    Thread.sleep(forTimeInterval: 1e-6)
   }
 }
 

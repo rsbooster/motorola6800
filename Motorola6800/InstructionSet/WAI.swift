@@ -11,6 +11,7 @@ extension InstructionSet {
         let (A, B, _, _, _, CC) = p.tuple()
         
         p.PC += 1
+        p.emulated.waitingForInterrupt = true
         
         m.pushWord(stackPointer: &p.SP, value: p.PC)
         m.pushWord(stackPointer: &p.SP, value: p.X)
