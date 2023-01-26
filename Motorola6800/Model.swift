@@ -107,6 +107,10 @@ struct Instruction {
     case NEGB
     case NEG
     case NOP
+    case ORAA
+    case ORAB
+    case PSHA
+    case PSHB
     case RTS
     case WAI
   }

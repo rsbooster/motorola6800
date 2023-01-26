@@ -36,6 +36,8 @@ extension InstructionSet {
     + InstructionSet.LSR
     + InstructionSet.NEG
     + InstructionSet.NOP
+    + InstructionSet.ORA
+    + InstructionSet.PSH
     + InstructionSet.RTS
     + InstructionSet.WAI
 }
