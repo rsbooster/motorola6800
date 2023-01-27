@@ -38,6 +38,10 @@ extension InstructionSet {
     + InstructionSet.NOP
     + InstructionSet.ORA
     + InstructionSet.PSH
+    + InstructionSet.PUL
+    + InstructionSet.ROL
+    + InstructionSet.ROR
+    + InstructionSet.RTI
     + InstructionSet.RTS
     + InstructionSet.WAI
 }

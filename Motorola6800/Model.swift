@@ -111,6 +111,14 @@ struct Instruction {
     case ORAB
     case PSHA
     case PSHB
+    case PULA
+    case PULB
+    case ROLA
+    case ROLB
+    case ROL
+    case RORA
+    case RORB
+    case ROR
     case RTS
     case WAI
   }
@@ -253,5 +261,16 @@ extension Processor.ConditionCodes {
     (Z ? 0x4 : 0) |
     (V ? 0x2 : 0) |
     (C ? 0x1 : 0)
+  }
+  
+  static func fromByte(_ value: UInt8) -> Self {
+    .init(
+      H: value & 0x20 != 0,
+      I: value & 0x10 != 0,
+      N: value & 0x8 != 0,
+      Z: value & 0x4 != 0,
+      V: value & 0x2 != 0,
+      C: value & 0x1 != 0
+    )
   }
 }

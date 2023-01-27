@@ -4,7 +4,7 @@ extension InstructionSet {
   static let RTS = [
     Instruction(
       opCode: 0x39,
-      mnemonic: .BSR,
+      mnemonic: .RTS,
       addressingMode: .relative,
       executionTime: 5,
       action: { p, m in
