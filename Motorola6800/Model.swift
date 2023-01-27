@@ -120,6 +120,15 @@ struct Instruction {
     case RORB
     case ROR
     case RTS
+    case SBA
+    case SBCA
+    case SBCB
+    case SEC
+    case SEI
+    case SEV
+    case STAA
+    case STAB
+    case STS
     case WAI
   }
   
@@ -155,6 +164,11 @@ struct Memory {
       return
     }
     content[Int(address)] = value
+  }
+  
+  mutating func writeWord(address: UInt16, value: UInt16) {
+    writeByte(address: address, value: value.upper)
+    writeByte(address: address + 1, value: value.lower)
   }
   
   mutating func pushByte(stackPointer: inout UInt16, value: UInt8) {

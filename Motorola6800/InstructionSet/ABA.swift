@@ -8,7 +8,7 @@ extension InstructionSet {
       addressingMode: .inherent,
       executionTime: 2,
       action: { p, _ in
-        let (A, B, X, PC, SP, CC) = p.tuple()
+        let (A, B, _, _, _, _) = p.tuple()
         
         let R = A &+ B
         

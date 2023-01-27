@@ -43,5 +43,12 @@ extension InstructionSet {
     + InstructionSet.ROR
     + InstructionSet.RTI
     + InstructionSet.RTS
+    + InstructionSet.SBA
+    + InstructionSet.SBC
+    + InstructionSet.SEC
+    + InstructionSet.SEI
+    + InstructionSet.SEV
+    + InstructionSet.STA
+    + InstructionSet.STS
     + InstructionSet.WAI
 }
