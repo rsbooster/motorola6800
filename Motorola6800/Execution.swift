@@ -34,6 +34,29 @@ final class Execution {
       instruction.action(&processor, &memory)
     }
   }
+  
+  func debugDisplay() {
+    print(displayIndicator(address: 0xC160))
+    print(displayIndicator(address: 0xC150))
+    print(displayIndicator(address: 0xC140))
+    print(displayIndicator(address: 0xC130))
+    print(displayIndicator(address: 0xC120))
+    print(displayIndicator(address: 0xC110))
+  }
+  
+  private func displayIndicator(address: UInt16) -> String {
+    String(
+      format: "a:%X b:%X c:%X d:%X e:%X f:%X g:%X DP:%X",
+      memory.readByte(address + 6)[0],
+      memory.readByte(address + 5)[0],
+      memory.readByte(address + 4)[0],
+      memory.readByte(address + 3)[0],
+      memory.readByte(address + 2)[0],
+      memory.readByte(address + 1)[0],
+      memory.readByte(address + 0)[0],
+      memory.readByte(address + 7)[0]
+    )
+  }
 }
 
 func execute() {
