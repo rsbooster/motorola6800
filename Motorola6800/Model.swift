@@ -129,6 +129,9 @@ struct Instruction {
     case STAA
     case STAB
     case STS
+    case STX
+    case SUBA
+    case SUBB
     case WAI
   }
   
