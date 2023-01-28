@@ -8,7 +8,7 @@ extension InstructionSet {
       addressingMode: .immediate,
       executionTime: 3,
       action: { p, m in
-        let (A, B, X, PC, SP, CC) = p.tuple()
+        let (_, _, _, PC, _, _) = p.tuple()
         
         let address = m.readWord(PC + 1)
         
@@ -21,9 +21,11 @@ extension InstructionSet {
       addressingMode: .indexed,
       executionTime: 3,
       action: { p, m in
-        let (A, B, X, PC, SP, CC) = p.tuple()
+        let (_, _, X, PC, _, _) = p.tuple()
         
-        p.PC = m.readOperandIndexed(PC + 1, X: X)
+        let offset = UInt16(m.readByte(PC + 1))
+        
+        p.PC = X + offset
       }
     ),
   ]

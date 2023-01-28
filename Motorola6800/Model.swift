@@ -201,8 +201,9 @@ struct Memory {
   }
   
   mutating func pullWord(stackPointer: inout UInt16) -> UInt16 {
+    let value = readWord(stackPointer + 1)
     stackPointer += 2
-    return readWord(stackPointer)
+    return value
   }
 }
 

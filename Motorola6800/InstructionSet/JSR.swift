@@ -11,7 +11,7 @@ extension InstructionSet {
         let (_, _, _, PC, SP, _) = p.tuple()
         
         m.pushWord(stackPointer: &p.SP, value: PC + 3)
-        p.PC = m.readOperandExtended(PC + 1)
+        p.PC = m.readWord(PC + 1)
       }
     ),
     Instruction(
@@ -23,7 +23,9 @@ extension InstructionSet {
         let (_, _, X, PC, SP, _) = p.tuple()
         
         m.pushWord(stackPointer: &p.SP, value: PC + 2)
-        p.PC = m.readOperandIndexed(PC + 1, X: X)
+        
+        let offset = UInt16(m.readByte(PC + 1))
+        p.PC = X + offset
       }
     ),
   ]

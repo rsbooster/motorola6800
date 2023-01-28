@@ -65,6 +65,7 @@
 		8CEBF1422985D22500FE9D0A /* TST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF1412985D22500FE9D0A /* TST.swift */; };
 		8CEBF1442985D34B00FE9D0A /* TSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF1432985D34B00FE9D0A /* TSX.swift */; };
 		8CEBF1462985D3FC00FE9D0A /* TXS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF1452985D3FC00FE9D0A /* TXS.swift */; };
+		8CEBF1492985DC6600FE9D0A /* et3400rom.bin in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF1482985DC6600FE9D0A /* et3400rom.bin */; };
 		8CF0A1972970C3B600A03033 /* NEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A1962970C3B600A03033 /* NEG.swift */; };
 		8CF0A4432972189000A03033 /* LDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A4422972189000A03033 /* LDS.swift */; };
 		8CF0A44529721B6000A03033 /* LDX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A44429721B6000A03033 /* LDX.swift */; };
@@ -155,6 +156,7 @@
 		8CEBF1412985D22500FE9D0A /* TST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TST.swift; sourceTree = "<group>"; };
 		8CEBF1432985D34B00FE9D0A /* TSX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSX.swift; sourceTree = "<group>"; };
 		8CEBF1452985D3FC00FE9D0A /* TXS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TXS.swift; sourceTree = "<group>"; };
+		8CEBF1482985DC6600FE9D0A /* et3400rom.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = et3400rom.bin; sourceTree = "<group>"; };
 		8CF0A1962970C3B600A03033 /* NEG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEG.swift; sourceTree = "<group>"; };
 		8CF0A4422972189000A03033 /* LDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDS.swift; sourceTree = "<group>"; };
 		8CF0A44429721B6000A03033 /* LDX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDX.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		8CB86AA429683776007823D0 /* Motorola6800 */ = {
 			isa = PBXGroup;
 			children = (
+				8CEBF1472985DC3000FE9D0A /* Resources */,
 				8CB86AD529686510007823D0 /* InstructionSet */,
 				8CB86AA529683776007823D0 /* Motorola6800App.swift */,
 				8CB86ACF296837B5007823D0 /* Model.swift */,
@@ -305,6 +308,14 @@
 				8CB86ADC29686672007823D0 /* WAI.swift */,
 			);
 			path = InstructionSet;
+			sourceTree = "<group>";
+		};
+		8CEBF1472985DC3000FE9D0A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8CEBF1482985DC6600FE9D0A /* et3400rom.bin */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +424,7 @@
 			files = (
 				8CB86AAD29683778007823D0 /* Preview Assets.xcassets in Resources */,
 				8CB86AAA29683778007823D0 /* Assets.xcassets in Resources */,
+				8CEBF1492985DC6600FE9D0A /* et3400rom.bin in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
