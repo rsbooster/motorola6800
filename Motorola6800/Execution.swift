@@ -1,23 +1,30 @@
 import Foundation
 
-func execute() {
-  let instructionMap = Dictionary(
-    uniqueKeysWithValues: InstructionSet.all.map { ($0.opCode, $0 )}
-  )
-  var processor = Processor(
-    A: 0,
-    B: 0,
-    X: 0,
-    PC: 0,
-    SP: 0,
-    CC: .init(H: false, I: false, N: false, Z: false, V: false, C: false),
-    emulated: .init(waitingForInterrupt: false)
-  )
-  var memory = initialMemory
+final class Execution {
+  let instructionMap: [UInt8: Instruction]
+  private(set) var processor: Processor
+  private(set) var memory: Memory
   
-  processor.PC = memory.readWord(0xFFFE)
+  init(
+    instructionMap: [UInt8: Instruction],
+    memory: Memory
+  ) {
+    self.instructionMap = instructionMap
+    self.memory = memory
+    self.processor = Processor(
+      A: 0,
+      B: 0,
+      X: 0,
+      PC: 0,
+      SP: 0,
+      CC: .init(H: false, I: false, N: false, Z: false, V: false, C: false),
+      emulated: .init(waitingForInterrupt: false)
+    )
+    
+    processor.PC = memory.readWord(0xFFFE)
+  }
   
-  while(true) {
+  func step() {
     if !processor.emulated.waitingForInterrupt {
       print(processor.description)
       
@@ -26,8 +33,23 @@ func execute() {
       
       instruction.action(&processor, &memory)
     }
-    Thread.sleep(forTimeInterval: 1e-6)
   }
+}
+
+func execute() {
+  let execution = Execution(
+    instructionMap: Dictionary(
+      uniqueKeysWithValues: InstructionSet.all.map { ($0.opCode, $0 )}
+    ),
+    memory: initialMemory
+  )
+  
+  let timer = Timer.scheduledTimer(
+    withTimeInterval: 1e-6,
+    repeats: true,
+    block: { _ in execution.step() }
+  )
+  RunLoop.main.add(timer, forMode: .common)
 }
 
 private let initialMemory: Memory = {
