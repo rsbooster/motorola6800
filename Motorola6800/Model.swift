@@ -133,6 +133,15 @@ struct Instruction {
     case SUBA
     case SUBB
     case SWI
+    case TAB
+    case TAP
+    case TBA
+    case TPA
+    case TSTA
+    case TSTB
+    case TST
+    case TSX
+    case TXS
     case WAI
   }
   

@@ -58,6 +58,13 @@
 		8CEBF1342985618B00FE9D0A /* STX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF1332985618B00FE9D0A /* STX.swift */; };
 		8CEBF1362985623600FE9D0A /* SUB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF1352985623600FE9D0A /* SUB.swift */; };
 		8CEBF138298563F700FE9D0A /* SWI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF137298563F700FE9D0A /* SWI.swift */; };
+		8CEBF13A2985D07D00FE9D0A /* TAB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF1392985D07D00FE9D0A /* TAB.swift */; };
+		8CEBF13C2985D11800FE9D0A /* TAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF13B2985D11800FE9D0A /* TAP.swift */; };
+		8CEBF13E2985D17200FE9D0A /* TBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF13D2985D17200FE9D0A /* TBA.swift */; };
+		8CEBF1402985D1CC00FE9D0A /* TPA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF13F2985D1CC00FE9D0A /* TPA.swift */; };
+		8CEBF1422985D22500FE9D0A /* TST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF1412985D22500FE9D0A /* TST.swift */; };
+		8CEBF1442985D34B00FE9D0A /* TSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF1432985D34B00FE9D0A /* TSX.swift */; };
+		8CEBF1462985D3FC00FE9D0A /* TXS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF1452985D3FC00FE9D0A /* TXS.swift */; };
 		8CF0A1972970C3B600A03033 /* NEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A1962970C3B600A03033 /* NEG.swift */; };
 		8CF0A4432972189000A03033 /* LDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A4422972189000A03033 /* LDS.swift */; };
 		8CF0A44529721B6000A03033 /* LDX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A44429721B6000A03033 /* LDX.swift */; };
@@ -141,6 +148,13 @@
 		8CEBF1332985618B00FE9D0A /* STX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STX.swift; sourceTree = "<group>"; };
 		8CEBF1352985623600FE9D0A /* SUB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUB.swift; sourceTree = "<group>"; };
 		8CEBF137298563F700FE9D0A /* SWI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWI.swift; sourceTree = "<group>"; };
+		8CEBF1392985D07D00FE9D0A /* TAB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAB.swift; sourceTree = "<group>"; };
+		8CEBF13B2985D11800FE9D0A /* TAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAP.swift; sourceTree = "<group>"; };
+		8CEBF13D2985D17200FE9D0A /* TBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBA.swift; sourceTree = "<group>"; };
+		8CEBF13F2985D1CC00FE9D0A /* TPA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPA.swift; sourceTree = "<group>"; };
+		8CEBF1412985D22500FE9D0A /* TST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TST.swift; sourceTree = "<group>"; };
+		8CEBF1432985D34B00FE9D0A /* TSX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSX.swift; sourceTree = "<group>"; };
+		8CEBF1452985D3FC00FE9D0A /* TXS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TXS.swift; sourceTree = "<group>"; };
 		8CF0A1962970C3B600A03033 /* NEG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEG.swift; sourceTree = "<group>"; };
 		8CF0A4422972189000A03033 /* LDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDS.swift; sourceTree = "<group>"; };
 		8CF0A44429721B6000A03033 /* LDX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDX.swift; sourceTree = "<group>"; };
@@ -281,6 +295,13 @@
 				8CEBF1332985618B00FE9D0A /* STX.swift */,
 				8CEBF1352985623600FE9D0A /* SUB.swift */,
 				8CEBF137298563F700FE9D0A /* SWI.swift */,
+				8CEBF1392985D07D00FE9D0A /* TAB.swift */,
+				8CEBF13B2985D11800FE9D0A /* TAP.swift */,
+				8CEBF13D2985D17200FE9D0A /* TBA.swift */,
+				8CEBF13F2985D1CC00FE9D0A /* TPA.swift */,
+				8CEBF1412985D22500FE9D0A /* TST.swift */,
+				8CEBF1432985D34B00FE9D0A /* TSX.swift */,
+				8CEBF1452985D3FC00FE9D0A /* TXS.swift */,
 				8CB86ADC29686672007823D0 /* WAI.swift */,
 			);
 			path = InstructionSet;
@@ -437,10 +458,12 @@
 				8CF0A4432972189000A03033 /* LDS.swift in Sources */,
 				8CB86AD4296844B8007823D0 /* Execution.swift in Sources */,
 				8CEBEB252981DA1100FE9D0A /* EOR.swift in Sources */,
+				8CEBF13C2985D11800FE9D0A /* TAP.swift in Sources */,
 				8CEBF1302984872100FE9D0A /* STA.swift in Sources */,
 				8CF0A8A62976104500A03033 /* ASR.swift in Sources */,
 				8C755A3029699ABC00827729 /* DAA.swift in Sources */,
 				8CB86AA829683776007823D0 /* ContentView.swift in Sources */,
+				8CEBF13A2985D07D00FE9D0A /* TAB.swift in Sources */,
 				8C43E0A32978ACCE00C6AE33 /* BIT.swift in Sources */,
 				8CB86AD22968444B007823D0 /* Extensions.swift in Sources */,
 				8CB86ADB29686641007823D0 /* LDA.swift in Sources */,
@@ -449,6 +472,7 @@
 				8CEBEDDE2983461600FE9D0A /* PSH.swift in Sources */,
 				8CB86AA629683776007823D0 /* Motorola6800App.swift in Sources */,
 				8CEBF12C298486A600FE9D0A /* SEI.swift in Sources */,
+				8CEBF1462985D3FC00FE9D0A /* TXS.swift in Sources */,
 				8CEBEB232980AC4100FE9D0A /* DEX.swift in Sources */,
 				8CEBF11E298479E100FE9D0A /* PUL.swift in Sources */,
 				8CEBEDDC2983455400FE9D0A /* ORA.swift in Sources */,
@@ -457,9 +481,13 @@
 				8C0CC2022968D6D6009BE6FB /* NOP.swift in Sources */,
 				8CF0A44729721C5400A03033 /* LSR.swift in Sources */,
 				8CB86ADD29686672007823D0 /* WAI.swift in Sources */,
+				8CEBF1422985D22500FE9D0A /* TST.swift in Sources */,
+				8CEBF13E2985D17200FE9D0A /* TBA.swift in Sources */,
 				8CEBEB212980ABEA00FE9D0A /* DES.swift in Sources */,
 				8CEBF1242984804E00FE9D0A /* RTI.swift in Sources */,
+				8CEBF1402985D1CC00FE9D0A /* TPA.swift in Sources */,
 				8CEBF1342985618B00FE9D0A /* STX.swift in Sources */,
+				8CEBF1442985D34B00FE9D0A /* TSX.swift in Sources */,
 				8C755A362969AF0A00827729 /* BRA.swift in Sources */,
 				8C43E0B3297C40AB00C6AE33 /* CMP.swift in Sources */,
 				8CB86AD72968652E007823D0 /* InstructionSet.swift in Sources */,

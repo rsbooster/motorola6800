@@ -53,5 +53,12 @@ extension InstructionSet {
     + InstructionSet.STX
     + InstructionSet.SUB
     + InstructionSet.SWI
+    + InstructionSet.TAB
+    + InstructionSet.TAP
+    + InstructionSet.TBA
+    + InstructionSet.TPA
+    + InstructionSet.TST
+    + InstructionSet.TSX
+    + InstructionSet.TXS
     + InstructionSet.WAI
 }
