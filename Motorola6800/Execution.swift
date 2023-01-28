@@ -15,7 +15,7 @@ func execute() {
   )
   var memory = initialMemory
   
-  processor.PC = UInt16(memory.readWord(0xFFFE))
+  processor.PC = memory.readWord(0xFFFE)
   
   while(true) {
     if !processor.emulated.waitingForInterrupt {

@@ -132,6 +132,7 @@ struct Instruction {
     case STX
     case SUBA
     case SUBB
+    case SWI
     case WAI
   }
   
@@ -272,6 +273,7 @@ extension Processor: CustomStringConvertible {
 
 extension Processor.ConditionCodes {
   var asByte: UInt8 {
+    0xC0 |
     (H ? 0x20 : 0) |
     (I ? 0x10 : 0) |
     (N ? 0x8 : 0) |

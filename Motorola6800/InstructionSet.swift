@@ -52,5 +52,6 @@ extension InstructionSet {
     + InstructionSet.STS
     + InstructionSet.STX
     + InstructionSet.SUB
+    + InstructionSet.SWI
     + InstructionSet.WAI
 }

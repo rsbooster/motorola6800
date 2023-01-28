@@ -57,6 +57,7 @@
 		8CEBF132298488DE00FE9D0A /* STS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF131298488DE00FE9D0A /* STS.swift */; };
 		8CEBF1342985618B00FE9D0A /* STX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF1332985618B00FE9D0A /* STX.swift */; };
 		8CEBF1362985623600FE9D0A /* SUB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF1352985623600FE9D0A /* SUB.swift */; };
+		8CEBF138298563F700FE9D0A /* SWI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF137298563F700FE9D0A /* SWI.swift */; };
 		8CF0A1972970C3B600A03033 /* NEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A1962970C3B600A03033 /* NEG.swift */; };
 		8CF0A4432972189000A03033 /* LDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A4422972189000A03033 /* LDS.swift */; };
 		8CF0A44529721B6000A03033 /* LDX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0A44429721B6000A03033 /* LDX.swift */; };
@@ -139,6 +140,7 @@
 		8CEBF131298488DE00FE9D0A /* STS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STS.swift; sourceTree = "<group>"; };
 		8CEBF1332985618B00FE9D0A /* STX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STX.swift; sourceTree = "<group>"; };
 		8CEBF1352985623600FE9D0A /* SUB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUB.swift; sourceTree = "<group>"; };
+		8CEBF137298563F700FE9D0A /* SWI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWI.swift; sourceTree = "<group>"; };
 		8CF0A1962970C3B600A03033 /* NEG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEG.swift; sourceTree = "<group>"; };
 		8CF0A4422972189000A03033 /* LDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDS.swift; sourceTree = "<group>"; };
 		8CF0A44429721B6000A03033 /* LDX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDX.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				8CEBF131298488DE00FE9D0A /* STS.swift */,
 				8CEBF1332985618B00FE9D0A /* STX.swift */,
 				8CEBF1352985623600FE9D0A /* SUB.swift */,
+				8CEBF137298563F700FE9D0A /* SWI.swift */,
 				8CB86ADC29686672007823D0 /* WAI.swift */,
 			);
 			path = InstructionSet;
@@ -425,6 +428,7 @@
 				8CF0A8A429760EB700A03033 /* ASL.swift in Sources */,
 				8CEBF1282984845B00FE9D0A /* SBC.swift in Sources */,
 				8CEBF12229847C2500FE9D0A /* ROR.swift in Sources */,
+				8CEBF138298563F700FE9D0A /* SWI.swift in Sources */,
 				8C43E0AF297C3E1900C6AE33 /* CLR.swift in Sources */,
 				8CEBEB2B2981DBE400FE9D0A /* INX.swift in Sources */,
 				8CEBF1262984833C00FE9D0A /* SBA.swift in Sources */,
