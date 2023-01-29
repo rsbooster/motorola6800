@@ -1,3 +1,4 @@
 .DS_Store
 
-Motorola6800.xcodeproj/xcuserdata
+Motorola6800.xcodeproj/xcuserdata/**
+Motorola6800.xcodeproj/project.xcworkspace/xcuserdata/**
