@@ -156,6 +156,15 @@ struct Memory {
   private var content: [UInt8]
   private let romSize: UInt16
   
+  init(rom: Data) {
+    let content = Array(repeating: 0, count: 65536 - rom.count)
+      + rom
+    self.init(
+      content: content,
+      romSize: UInt16(rom.count)
+    )
+  }
+  
   init(
     content: [UInt8],
     romSize: UInt16

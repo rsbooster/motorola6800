@@ -1,57 +1,34 @@
 import Foundation
 import SwiftUI
 
-struct Display {
-  struct Indicator {
-    var a: Bool
-    var b: Bool
-    var c: Bool
-    var d: Bool
-    var e: Bool
-    var f: Bool
-    var g: Bool
-    var DP: Bool
-  }
-  
-  var H: Indicator
-  var I: Indicator
-  var N: Indicator
-  var Z: Indicator
-  var V: Indicator
-  var C: Indicator
-  
-  static func fromMemory(_ memory: Memory) -> Display {
-    Display(
-      H: readIndicator(memory, address: 0xC160),
-      I: readIndicator(memory, address: 0xC150),
-      N: readIndicator(memory, address: 0xC140),
-      Z: readIndicator(memory, address: 0xC130),
-      V: readIndicator(memory, address: 0xC120),
-      C: readIndicator(memory, address: 0xC110)
-    )
-  }
-  
-  private static func readIndicator(
-    _ memory: Memory,
-    address: UInt16
-  ) -> Indicator {
-    Indicator(
-      a: memory.readByte(address + 6)[0],
-      b: memory.readByte(address + 5)[0],
-      c: memory.readByte(address + 4)[0],
-      d: memory.readByte(address + 3)[0],
-      e: memory.readByte(address + 2)[0],
-      f: memory.readByte(address + 1)[0],
-      g: memory.readByte(address + 0)[0],
-      DP: memory.readByte(address + 7)[0]
-    )
-  }
-}
-
 final class Execution {
-  let instructionMap: [UInt8: Instruction]
-  private(set) var processor: Processor
-  private(set) var memory: Memory
+  private let instructionMap: [UInt8: Instruction]
+  private var processor: Processor
+  private var memory: Memory
+  
+  private var input: [Binding<InputDevice>] = []
+  private var output: [Binding<OutputDevice>] = []
+  
+  private var logging = false
+  private lazy var timer = Timer.scheduledTimer(
+    withTimeInterval: 1e-6,
+    repeats: true,
+    block: { [weak self] _ in
+      self?.step()
+    }
+  )
+  
+  convenience init(rom: Data) {
+    let instructionMap = Dictionary(
+      uniqueKeysWithValues: InstructionSet.all.map { ($0.opCode, $0 )}
+    )
+    let memory = Memory(rom: rom)
+    
+    self.init(
+      instructionMap: instructionMap,
+      memory: memory
+    )
+  }
   
   init(
     instructionMap: [UInt8: Instruction],
@@ -68,57 +45,66 @@ final class Execution {
       CC: .init(H: false, I: false, N: false, Z: false, V: false, C: false),
       emulated: .init(waitingForInterrupt: false)
     )
-    
-    processor.PC = memory.readWord(0xFFFE)
+    reset()
   }
   
   func step() {
     if !processor.emulated.waitingForInterrupt {
-      print(processor.description)
+      if logging {
+        print(processor.description)
+      }
+      
+      for device in input {
+        for (index, byte) in device.wrappedValue.read().enumerated() {
+          memory.writeByte(address: device.wrappedValue.startAddress + UInt16(index), value: byte)
+        }
+      }
       
       let opCode = memory.readByte(processor.PC)
       let instruction = instructionMap[opCode]!
       
       instruction.action(&processor, &memory)
+      
+      for device in output {
+        var data = Array<UInt8>(
+          repeating: 0,
+          count: Int(device.wrappedValue.size)
+        )
+        for index in 0..<device.wrappedValue.size {
+          data[Int(index)] = memory.readByte(device.wrappedValue.startAddress + index)
+        }
+        device.wrappedValue.write(data)
+      }
     }
   }
-}
-
-func execute(display: Binding<Display>) {
-  let execution = Execution(
-    instructionMap: Dictionary(
-      uniqueKeysWithValues: InstructionSet.all.map { ($0.opCode, $0 )}
-    ),
-    memory: et3400rom
-  )
   
-  let timer = Timer.scheduledTimer(
-    withTimeInterval: 1e-6,
-    repeats: true,
-    block: { _ in
-      execution.step()
-      display.wrappedValue = .fromMemory(execution.memory)
-    }
-  )
-  RunLoop.main.add(timer, forMode: .common)
+  func run(
+    input: [Binding<InputDevice>],
+    output: [Binding<OutputDevice>]
+  ) {
+    self.input = input
+    self.output = output
+    RunLoop.main.add(timer, forMode: .common)
+  }
+  
+  func reset() {
+    processor.PC = memory.readWord(0xFFFE)
+  }
+  
+  deinit {
+    timer.invalidate()
+  }
 }
 
 private let sampleProgram: Memory = {
   let memoryStart: [UInt8] = [
-    0x86, 0xFF,
-    0xC6, 0xFE,
+    0x86, 0x00,
+    0x4C,
     
-    0x40,
-    0x50,
-    
-    0x1B,
-    
-    0x19,
-    
-    0x24, 0xFC,
-    
-    0x8E, 0x80, 0x00,
-    
+    0xBD, 0xFE, 0x20,
+
+    0x7E, 0x00, 0x02,
+
     0x3E,
   ]
   
@@ -130,13 +116,5 @@ private let sampleProgram: Memory = {
     + Array(repeating: 0, count: 65536 - memoryStart.count - memoryEnd.count)
     + memoryEnd
   
-  return Memory(content: content, romSize: 1024)
-}()
-
-private let et3400rom: Memory = {
-  let url = Bundle.main.url(forResource: "et3400rom", withExtension: "bin")!
-  let rom = try! Data(contentsOf: url)
-  let content = Array(repeating: 0, count: 65536 - rom.count)
-    + rom
   return Memory(content: content, romSize: 1024)
 }()
