@@ -1,4 +1,52 @@
 import Foundation
+import SwiftUI
+
+struct Display {
+  struct Indicator {
+    var a: Bool
+    var b: Bool
+    var c: Bool
+    var d: Bool
+    var e: Bool
+    var f: Bool
+    var g: Bool
+    var DP: Bool
+  }
+  
+  var H: Indicator
+  var I: Indicator
+  var N: Indicator
+  var Z: Indicator
+  var V: Indicator
+  var C: Indicator
+  
+  static func fromMemory(_ memory: Memory) -> Display {
+    Display(
+      H: readIndicator(memory, address: 0xC160),
+      I: readIndicator(memory, address: 0xC150),
+      N: readIndicator(memory, address: 0xC140),
+      Z: readIndicator(memory, address: 0xC130),
+      V: readIndicator(memory, address: 0xC120),
+      C: readIndicator(memory, address: 0xC110)
+    )
+  }
+  
+  private static func readIndicator(
+    _ memory: Memory,
+    address: UInt16
+  ) -> Indicator {
+    Indicator(
+      a: memory.readByte(address + 6)[0],
+      b: memory.readByte(address + 5)[0],
+      c: memory.readByte(address + 4)[0],
+      d: memory.readByte(address + 3)[0],
+      e: memory.readByte(address + 2)[0],
+      f: memory.readByte(address + 1)[0],
+      g: memory.readByte(address + 0)[0],
+      DP: memory.readByte(address + 7)[0]
+    )
+  }
+}
 
 final class Execution {
   let instructionMap: [UInt8: Instruction]
@@ -34,32 +82,9 @@ final class Execution {
       instruction.action(&processor, &memory)
     }
   }
-  
-  func debugDisplay() {
-    print(displayIndicator(address: 0xC160))
-    print(displayIndicator(address: 0xC150))
-    print(displayIndicator(address: 0xC140))
-    print(displayIndicator(address: 0xC130))
-    print(displayIndicator(address: 0xC120))
-    print(displayIndicator(address: 0xC110))
-  }
-  
-  private func displayIndicator(address: UInt16) -> String {
-    String(
-      format: "a:%X b:%X c:%X d:%X e:%X f:%X g:%X DP:%X",
-      memory.readByte(address + 6)[0],
-      memory.readByte(address + 5)[0],
-      memory.readByte(address + 4)[0],
-      memory.readByte(address + 3)[0],
-      memory.readByte(address + 2)[0],
-      memory.readByte(address + 1)[0],
-      memory.readByte(address + 0)[0],
-      memory.readByte(address + 7)[0]
-    )
-  }
 }
 
-func execute() {
+func execute(display: Binding<Display>) {
   let execution = Execution(
     instructionMap: Dictionary(
       uniqueKeysWithValues: InstructionSet.all.map { ($0.opCode, $0 )}
@@ -70,7 +95,10 @@ func execute() {
   let timer = Timer.scheduledTimer(
     withTimeInterval: 1e-6,
     repeats: true,
-    block: { _ in execution.step() }
+    block: { _ in
+      execution.step()
+      display.wrappedValue = .fromMemory(execution.memory)
+    }
   )
   RunLoop.main.add(timer, forMode: .common)
 }
