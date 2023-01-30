@@ -13,7 +13,7 @@ extension InstructionSet {
         let M = m.readByte(PC + 1)
         let R = A &- M
         
-        p.updateCC(A: R, B: M, R: A)
+        p.CC.update(X: A, M: M, R: R)
         
         p.PC += 2
       }
@@ -29,7 +29,7 @@ extension InstructionSet {
         let M: UInt8 = m.readOperandDirect(PC + 1)
         let R = A &- M
         
-        p.updateCC(A: R, B: M, R: A)
+        p.CC.update(X: A, M: M, R: R)
         
         p.PC += 2
       }
@@ -45,7 +45,7 @@ extension InstructionSet {
         let M: UInt8 = m.readOperandExtended(PC + 1)
         let R = A &- M
         
-        p.updateCC(A: R, B: M, R: A)
+        p.CC.update(X: A, M: M, R: R)
         
         p.PC += 3
       }
@@ -61,7 +61,7 @@ extension InstructionSet {
         let M: UInt8 = m.readOperandIndexed(PC + 1, X: X)
         let R = A &- M
         
-        p.updateCC(A: R, B: M, R: A)
+        p.CC.update(X: A, M: M, R: R)
         
         p.PC += 2
       }
@@ -78,7 +78,7 @@ extension InstructionSet {
         let M = m.readByte(PC + 1)
         let R = B &- M
         
-        p.updateCC(A: R, B: M, R: B)
+        p.CC.update(X: B, M: M, R: R)
         
         p.PC += 2
       }
@@ -94,7 +94,7 @@ extension InstructionSet {
         let M: UInt8 = m.readOperandDirect(PC + 1)
         let R = B &- M
         
-        p.updateCC(A: R, B: M, R: B)
+        p.CC.update(X: B, M: M, R: R)
         
         p.PC += 2
       }
@@ -110,7 +110,7 @@ extension InstructionSet {
         let M: UInt8 = m.readOperandExtended(PC + 1)
         let R = B &- M
         
-        p.updateCC(A: R, B: M, R: B)
+        p.CC.update(X: B, M: M, R: R)
         
         p.PC += 3
       }
@@ -126,7 +126,7 @@ extension InstructionSet {
         let M: UInt8 = m.readOperandIndexed(PC + 1, X: X)
         let R = B &- M
         
-        p.updateCC(A: R, B: M, R: B)
+        p.CC.update(X: B, M: M, R: R)
         
         p.PC += 2
       }
@@ -134,12 +134,11 @@ extension InstructionSet {
   ]
 }
 
-
-private extension Processor {
-  mutating func updateCC(A: UInt8, B: UInt8, R: UInt8) {
-    CC.N = R[7]
-    CC.Z = R == 0
-    CC.V = isOverflow(A[7], B[7], R[7])
-    CC.C = isCarry(A[7], B[7], R[7])
+private extension Processor.ConditionCodes {
+  mutating func update(X: UInt8, M: UInt8, R: UInt8) {
+    N = R[7]
+    Z = R == 0
+    V = isOverflow(R[7], M[7], X[7])
+    C = isCarry(R[7], M[7], X[7])
   }
 }

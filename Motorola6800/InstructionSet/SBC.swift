@@ -10,8 +10,8 @@ extension InstructionSet {
       action: { p, m in
         let (A, _, _, PC, _, CC) = p.tuple()
         
-        let M = m.readByte(PC + 1) &- CC.C.asInt()
-        let R = A &- M
+        let M = m.readByte(PC + 1)
+        let R = A &- M &- CC.C.asInt()
         
         p.CC.update(X: A, M: M, R: R)
         
@@ -27,8 +27,8 @@ extension InstructionSet {
       action: { p, m in
         let (A, _, _, PC, _, CC) = p.tuple()
         
-        let M: UInt8 = m.readOperandDirect(PC + 1) &- CC.C.asInt()
-        let R = A &- M
+        let M: UInt8 = m.readOperandDirect(PC + 1)
+        let R = A &- M &- CC.C.asInt()
         
         p.CC.update(X: A, M: M, R: R)
         
@@ -44,8 +44,8 @@ extension InstructionSet {
       action: { p, m in
         let (A, _, _, PC, _, CC) = p.tuple()
         
-        let M: UInt8 = m.readOperandExtended(PC + 1) &- CC.C.asInt()
-        let R = A &- M
+        let M: UInt8 = m.readOperandExtended(PC + 1)
+        let R = A &- M &- CC.C.asInt()
         
         p.CC.update(X: A, M: M, R: R)
         
@@ -61,8 +61,8 @@ extension InstructionSet {
       action: { p, m in
         let (A, _, X, PC, _, CC) = p.tuple()
         
-        let M: UInt8 = m.readOperandIndexed(PC + 1, X: X) &- CC.C.asInt()
-        let R = A &- M
+        let M: UInt8 = m.readOperandIndexed(PC + 1, X: X)
+        let R = A &- M &- CC.C.asInt()
         
         p.CC.update(X: A, M: M, R: R)
         
@@ -79,8 +79,8 @@ extension InstructionSet {
       action: { p, m in
         let (_, B, _, PC, _, CC) = p.tuple()
         
-        let M = m.readByte(PC + 1) &- CC.C.asInt()
-        let R = B &- M
+        let M = m.readByte(PC + 1)
+        let R = B &- M &- CC.C.asInt()
         
         p.CC.update(X: B, M: M, R: R)
         
@@ -96,8 +96,8 @@ extension InstructionSet {
       action: { p, m in
         let (_, B, _, PC, _, CC) = p.tuple()
         
-        let M: UInt8 = m.readOperandDirect(PC + 1) &- CC.C.asInt()
-        let R = B &- M
+        let M: UInt8 = m.readOperandDirect(PC + 1)
+        let R = B &- M &- CC.C.asInt()
         
         p.CC.update(X: B, M: M, R: R)
         
@@ -113,8 +113,8 @@ extension InstructionSet {
       action: { p, m in
         let (_, B, _, PC, _, CC) = p.tuple()
         
-        let M: UInt8 = m.readOperandExtended(PC + 1) &- CC.C.asInt()
-        let R = B &- M
+        let M: UInt8 = m.readOperandExtended(PC + 1)
+        let R = B &- M &- CC.C.asInt()
         
         p.CC.update(X: B, M: M, R: R)
         
@@ -130,8 +130,8 @@ extension InstructionSet {
       action: { p, m in
         let (_, B, X, PC, _, CC) = p.tuple()
         
-        let M: UInt8 = m.readOperandIndexed(PC + 1, X: X) &- CC.C.asInt()
-        let R = B &- M
+        let M: UInt8 = m.readOperandIndexed(PC + 1, X: X)
+        let R = B &- M &- CC.C.asInt()
         
         p.CC.update(X: B, M: M, R: R)
         

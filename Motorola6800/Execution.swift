@@ -24,8 +24,11 @@ final class Execution {
     )
     let ram: [UInt8] = [
       0x86, 0x00,
-      0x4C,
+      0x8B, 0x01,
       
+      0x19,
+      
+      0xBD, 0xFC, 0xBC,
       0xBD, 0xFE, 0x20,
 
       0x7E, 0x00, 0x02,
@@ -61,11 +64,6 @@ final class Execution {
     if !processor.emulated.waitingForInterrupt {
       if logging {
         print(processor.description)
-      }
-      
-      if processor.PC < 10 {
-        logging = true
-        print("###")
       }
       
       for device in input {
@@ -109,27 +107,3 @@ final class Execution {
     timer.invalidate()
   }
 }
-
-private let sampleProgram: Memory = {
-  let memoryStart: [UInt8] = [
-    0x8E, 0x00, 0x50,
-    0x86, 0x00,
-    0x4C,
-    
-    0xBD, 0xFE, 0x20,
-
-    0x7E, 0x00, 0x05,
-
-    0x3E,
-  ]
-  
-  let memoryEnd: [UInt8] = [
-    0x00, 0x00
-  ]
-  
-  let content = memoryStart
-    + Array(repeating: 0, count: 65536 - memoryStart.count - memoryEnd.count)
-    + memoryEnd
-  
-  return Memory(content: content, romSize: 1024)
-}()
