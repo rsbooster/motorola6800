@@ -22,11 +22,20 @@ final class Execution {
     let instructionMap = Dictionary(
       uniqueKeysWithValues: InstructionSet.all.map { ($0.opCode, $0 )}
     )
-    let memory = Memory(rom: rom)
+    let ram: [UInt8] = [
+      0x86, 0x00,
+      0x4C,
+      
+      0xBD, 0xFE, 0x20,
+
+      0x7E, 0x00, 0x02,
+
+      0x3E,
+    ]
     
     self.init(
       instructionMap: instructionMap,
-      memory: memory
+      memory: Memory(ram: ram, rom: rom)
     )
   }
   
@@ -52,6 +61,11 @@ final class Execution {
     if !processor.emulated.waitingForInterrupt {
       if logging {
         print(processor.description)
+      }
+      
+      if processor.PC < 10 {
+        logging = true
+        print("###")
       }
       
       for device in input {
@@ -98,12 +112,13 @@ final class Execution {
 
 private let sampleProgram: Memory = {
   let memoryStart: [UInt8] = [
+    0x8E, 0x00, 0x50,
     0x86, 0x00,
     0x4C,
     
     0xBD, 0xFE, 0x20,
 
-    0x7E, 0x00, 0x02,
+    0x7E, 0x00, 0x05,
 
     0x3E,
   ]
