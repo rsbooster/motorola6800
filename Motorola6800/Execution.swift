@@ -18,24 +18,10 @@ final class Execution {
     }
   )
   
-  convenience init(rom: Data) {
+  convenience init(ram: [UInt8], rom: Data) {
     let instructionMap = Dictionary(
       uniqueKeysWithValues: InstructionSet.all.map { ($0.opCode, $0 )}
     )
-    let ram: [UInt8] = [
-      0x86, 0x00,
-      0x8B, 0x01,
-      
-      0x19,
-      
-      0xBD, 0xFC, 0xBC,
-      0xBD, 0xFE, 0x20,
-
-      0x7E, 0x00, 0x02,
-
-      0x3E,
-    ]
-    
     self.init(
       instructionMap: instructionMap,
       memory: Memory(ram: ram, rom: rom)

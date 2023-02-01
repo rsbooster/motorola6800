@@ -1,7 +1,10 @@
 import SwiftUI
 
 struct HeathkitView: View {
-  private let execution = Execution(rom: rom)
+  private let execution = Execution(
+    ram: Samples.decimalCounter,
+    rom: rom
+  )
   
   @State
   var display: Display = .filled
