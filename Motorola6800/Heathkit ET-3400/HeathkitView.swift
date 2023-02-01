@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HeathkitView: View {
   private let execution = Execution(
-    ram: Samples.decimalCounter,
+    ram: Samples.decimalConverter,
     rom: rom
   )
   

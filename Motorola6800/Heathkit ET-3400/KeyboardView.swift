@@ -53,8 +53,8 @@ struct KeyboardButton: View {
     ).onChanged { _ in value = true }
       .onEnded { _ in value = false }
     VStack {
-      Text(title)
-      Text(subtitle)
+      Text(title).font(.system(size: 14))
+      Text(subtitle).fontWeight(.bold)
     }
       .frame(width: 50, height: 50)
       .border(.gray)
@@ -70,9 +70,11 @@ struct ResetButton: View {
       action: action,
       label: {
         Text("RES")
-          .frame(width: 50, height: 50)
-          .border(.gray)
+          .font(.system(size: 14))
       }
     )
+    .frame(width: 50, height: 50)
+    .foregroundColor(.primary)
+    .border(.gray)
   }
 }
