@@ -17,6 +17,7 @@
 		8C43E0B1297C3FD100C6AE33 /* CLV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43E0B0297C3FD100C6AE33 /* CLV.swift */; };
 		8C43E0B3297C40AB00C6AE33 /* CMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43E0B2297C40AB00C6AE33 /* CMP.swift */; };
 		8C43E2C0297E0C8D00C6AE33 /* CPX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43E2BF297E0C8D00C6AE33 /* CPX.swift */; };
+		8C62C7D5298B2AFC0072BE3D /* DecimalConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C62C7D4298B2AFC0072BE3D /* DecimalConverter.swift */; };
 		8C755A3029699ABC00827729 /* DAA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C755A2F29699ABC00827729 /* DAA.swift */; };
 		8C755A322969A39B00827729 /* JMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C755A312969A39B00827729 /* JMP.swift */; };
 		8C755A362969AF0A00827729 /* BRA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C755A352969AF0A00827729 /* BRA.swift */; };
@@ -112,6 +113,7 @@
 		8C43E0B0297C3FD100C6AE33 /* CLV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLV.swift; sourceTree = "<group>"; };
 		8C43E0B2297C40AB00C6AE33 /* CMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMP.swift; sourceTree = "<group>"; };
 		8C43E2BF297E0C8D00C6AE33 /* CPX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPX.swift; sourceTree = "<group>"; };
+		8C62C7D4298B2AFC0072BE3D /* DecimalConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalConverter.swift; sourceTree = "<group>"; };
 		8C755A2F29699ABC00827729 /* DAA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAA.swift; sourceTree = "<group>"; };
 		8C755A312969A39B00827729 /* JMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMP.swift; sourceTree = "<group>"; };
 		8C755A352969AF0A00827729 /* BRA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRA.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				8C9A5B2C2989E10600742D69 /* DecimalCounter.swift */,
+				8C62C7D4298B2AFC0072BE3D /* DecimalConverter.swift */,
 				8C9A5B2E2989E11400742D69 /* Samples.swift */,
 			);
 			path = Samples;
@@ -486,6 +489,7 @@
 				8C755A38296CDF4100827729 /* COM.swift in Sources */,
 				8CEBF1362985623600FE9D0A /* SUB.swift in Sources */,
 				8CEBF132298488DE00FE9D0A /* STS.swift in Sources */,
+				8C62C7D5298B2AFC0072BE3D /* DecimalConverter.swift in Sources */,
 				8CEBF12E298486EF00FE9D0A /* SEV.swift in Sources */,
 				8CF0A8A429760EB700A03033 /* ASL.swift in Sources */,
 				8CEBF1282984845B00FE9D0A /* SBC.swift in Sources */,
