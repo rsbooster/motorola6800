@@ -24,6 +24,8 @@
 		8C9A595F29871CCB00742D69 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A595E29871CCB00742D69 /* Devices.swift */; };
 		8C9A5B2D2989E10600742D69 /* DecimalCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A5B2C2989E10600742D69 /* DecimalCounter.swift */; };
 		8C9A5B2F2989E11400742D69 /* Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A5B2E2989E11400742D69 /* Samples.swift */; };
+		8C9A5B312989E38100742D69 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A5B302989E38100742D69 /* KeyboardView.swift */; };
+		8C9A5B332989E3AD00742D69 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A5B322989E3AD00742D69 /* DisplayView.swift */; };
 		8CB86AA629683776007823D0 /* Motorola6800App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86AA529683776007823D0 /* Motorola6800App.swift */; };
 		8CB86AA829683776007823D0 /* HeathkitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86AA729683776007823D0 /* HeathkitView.swift */; };
 		8CB86AAA29683778007823D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CB86AA929683778007823D0 /* Assets.xcassets */; };
@@ -117,6 +119,8 @@
 		8C9A595E29871CCB00742D69 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
 		8C9A5B2C2989E10600742D69 /* DecimalCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalCounter.swift; sourceTree = "<group>"; };
 		8C9A5B2E2989E11400742D69 /* Samples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Samples.swift; sourceTree = "<group>"; };
+		8C9A5B302989E38100742D69 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		8C9A5B322989E3AD00742D69 /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		8CB86AA229683776007823D0 /* Motorola6800.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motorola6800.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB86AA529683776007823D0 /* Motorola6800App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motorola6800App.swift; sourceTree = "<group>"; };
 		8CB86AA729683776007823D0 /* HeathkitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeathkitView.swift; sourceTree = "<group>"; };
@@ -336,6 +340,8 @@
 				8CEBF14A298717BB00FE9D0A /* Display.swift */,
 				8CEBF14C2987180B00FE9D0A /* Keyboard.swift */,
 				8CB86AA729683776007823D0 /* HeathkitView.swift */,
+				8C9A5B322989E3AD00742D69 /* DisplayView.swift */,
+				8C9A5B302989E38100742D69 /* KeyboardView.swift */,
 				8CEBF1482985DC6600FE9D0A /* et3400rom.bin */,
 			);
 			path = "Heathkit ET-3400";
@@ -495,6 +501,7 @@
 				8CB86AD4296844B8007823D0 /* Execution.swift in Sources */,
 				8CEBEB252981DA1100FE9D0A /* EOR.swift in Sources */,
 				8CEBF13C2985D11800FE9D0A /* TAP.swift in Sources */,
+				8C9A5B312989E38100742D69 /* KeyboardView.swift in Sources */,
 				8CEBF1302984872100FE9D0A /* STA.swift in Sources */,
 				8CF0A8A62976104500A03033 /* ASR.swift in Sources */,
 				8C755A3029699ABC00827729 /* DAA.swift in Sources */,
@@ -529,6 +536,7 @@
 				8CEBF1442985D34B00FE9D0A /* TSX.swift in Sources */,
 				8C755A362969AF0A00827729 /* BRA.swift in Sources */,
 				8C43E0B3297C40AB00C6AE33 /* CMP.swift in Sources */,
+				8C9A5B332989E3AD00742D69 /* DisplayView.swift in Sources */,
 				8CB86AD72968652E007823D0 /* InstructionSet.swift in Sources */,
 				8CF0A1972970C3B600A03033 /* NEG.swift in Sources */,
 				8CEBF12A2984866800FE9D0A /* SEC.swift in Sources */,
