@@ -1,3 +1,8 @@
+/*
+ Run address: 0x0000
+ Input: None
+*/
+
 extension Samples {
   static let decimalCounter: [UInt8] = [
     /*00  LDA A 00   */ 0x86, 0x00,

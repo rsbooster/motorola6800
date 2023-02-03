@@ -1,3 +1,8 @@
+/*
+ Run address: 0x0107
+ Input: two-byte hex value
+*/
+
 extension Samples {
   static let decimalConverter: [UInt8] = [
     /*00             */ 0x00,

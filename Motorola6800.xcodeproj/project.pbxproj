@@ -39,6 +39,7 @@
 		8CB86AD9296865DA007823D0 /* ABA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86AD8296865DA007823D0 /* ABA.swift */; };
 		8CB86ADB29686641007823D0 /* LDA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86ADA29686641007823D0 /* LDA.swift */; };
 		8CB86ADD29686672007823D0 /* WAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86ADC29686672007823D0 /* WAI.swift */; };
+		8CC3B05B298DC94B00F7F608 /* BranchCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3B05A298DC94B00F7F608 /* BranchCalculator.swift */; };
 		8CEBEB1F297F4DC900FE9D0A /* DEC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB1E297F4DC900FE9D0A /* DEC.swift */; };
 		8CEBEB212980ABEA00FE9D0A /* DES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB202980ABEA00FE9D0A /* DES.swift */; };
 		8CEBEB232980AC4100FE9D0A /* DEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB222980AC4100FE9D0A /* DEX.swift */; };
@@ -138,6 +139,7 @@
 		8CB86AD8296865DA007823D0 /* ABA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABA.swift; sourceTree = "<group>"; };
 		8CB86ADA29686641007823D0 /* LDA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDA.swift; sourceTree = "<group>"; };
 		8CB86ADC29686672007823D0 /* WAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAI.swift; sourceTree = "<group>"; };
+		8CC3B05A298DC94B00F7F608 /* BranchCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchCalculator.swift; sourceTree = "<group>"; };
 		8CEBEB1E297F4DC900FE9D0A /* DEC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEC.swift; sourceTree = "<group>"; };
 		8CEBEB202980ABEA00FE9D0A /* DES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DES.swift; sourceTree = "<group>"; };
 		8CEBEB222980AC4100FE9D0A /* DEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEX.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		8C9A5B2B2989E0F100742D69 /* Samples */ = {
 			isa = PBXGroup;
 			children = (
+				8CC3B05A298DC94B00F7F608 /* BranchCalculator.swift */,
 				8C9A5B2C2989E10600742D69 /* DecimalCounter.swift */,
 				8C62C7D4298B2AFC0072BE3D /* DecimalConverter.swift */,
 				8C9A5B2E2989E11400742D69 /* Samples.swift */,
@@ -517,6 +520,7 @@
 				8C43E2C0297E0C8D00C6AE33 /* CPX.swift in Sources */,
 				8C43E0AB297C3D0700C6AE33 /* CLC.swift in Sources */,
 				8CEBEDDE2983461600FE9D0A /* PSH.swift in Sources */,
+				8CC3B05B298DC94B00F7F608 /* BranchCalculator.swift in Sources */,
 				8CB86AA629683776007823D0 /* Motorola6800App.swift in Sources */,
 				8CEBF12C298486A600FE9D0A /* SEI.swift in Sources */,
 				8CEBF14B298717BB00FE9D0A /* Display.swift in Sources */,

@@ -12,7 +12,7 @@ struct HeathkitView: View {
     self.keyboard = Keyboard()
     self.displayAdapter = DisplayAdapter()
     let memory = Memory(
-      ram: Samples.decimalConverter,
+      ram: Samples.branchCalculator,
       rom: rom,
       inputDevices: [keyboard],
       outputDevices: [displayAdapter]
