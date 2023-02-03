@@ -6,8 +6,6 @@ final class Execution {
   private var processor: Processor
   private var memory: Memory
   
-  private var output: [Binding<OutputDevice>] = []
-  
   private var logging = false
   private lazy var timer = Timer.scheduledTimer(
     withTimeInterval: 1e-6,
@@ -45,24 +43,10 @@ final class Execution {
       let instruction = instructionMap[opCode]!
       
       instruction.action(&processor, &memory)
-      
-      for device in output {
-        var data = Array<UInt8>(
-          repeating: 0,
-          count: Int(device.wrappedValue.size)
-        )
-        for index in 0..<device.wrappedValue.size {
-          data[Int(index)] = memory.readByte(device.wrappedValue.startAddress + index)
-        }
-        device.wrappedValue.write(data)
-      }
     }
   }
   
-  func run(
-    output: [Binding<OutputDevice>]
-  ) {
-    self.output = output
+  func run() {
     RunLoop.main.add(timer, forMode: .common)
   }
   

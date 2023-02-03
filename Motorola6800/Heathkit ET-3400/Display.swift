@@ -19,38 +19,56 @@ struct Display {
 }
 
 extension Display: OutputDevice {
-  var startAddress: UInt16 {
-    0xC110
+  var addressRange: ClosedRange<UInt16> {
+    0xC110...0xC16F
   }
   
-  var size: UInt16 {
-    0x5F
-  }
-  
-  mutating func write(_ data: [UInt8]) {
-    H = readIndicator(data, address: 0x50)
-    I = readIndicator(data, address: 0x40)
-    N = readIndicator(data, address: 0x30)
-    Z = readIndicator(data, address: 0x20)
-    V = readIndicator(data, address: 0x10)
-    C = readIndicator(data, address: 0x0)
+  mutating func writeByte(address: UInt16, value: UInt8) {
+    let indicatorAddress = address & 0xFFF0
+    let segmentAddress = address & 0x0007
+    
+    switch indicatorAddress {
+    case 0xC110:
+      C.writeSegment(address: segmentAddress, value: value)
+    case 0xC120:
+      V.writeSegment(address: segmentAddress, value: value)
+    case 0xC130:
+      Z.writeSegment(address: segmentAddress, value: value)
+    case 0xC140:
+      N.writeSegment(address: segmentAddress, value: value)
+    case 0xC150:
+      I.writeSegment(address: segmentAddress, value: value)
+    case 0xC160:
+      H.writeSegment(address: segmentAddress, value: value)
+    default:
+      break
+    }
   }
 }
 
-private func readIndicator(
-  _ data: [UInt8],
-  address: Int
-) -> Display.Indicator {
-  Display.Indicator(
-    a: data[address + 6][0],
-    b: data[address + 5][0],
-    c: data[address + 4][0],
-    d: data[address + 3][0],
-    e: data[address + 2][0],
-    f: data[address + 1][0],
-    g: data[address + 0][0],
-    DP: data[address + 7][0]
-  )
+private extension Display.Indicator {
+  mutating func writeSegment(address: UInt16, value: UInt8) {
+    switch address {
+    case 0x7:
+      DP = value[0]
+    case 0x6:
+      a = value[0]
+    case 0x5:
+      b = value[0]
+    case 0x4:
+      c = value[0]
+    case 0x3:
+      d = value[0]
+    case 0x2:
+      e = value[0]
+    case 0x1:
+      f = value[0]
+    case 0x0:
+      g = value[0]
+    default:
+      fatalError()
+    }
+  }
 }
 
 extension Display {

@@ -5,8 +5,7 @@ protocol InputDevice {
 }
 
 protocol OutputDevice {
-  var startAddress: UInt16 { get }
-  var size: UInt16 { get }
+  var addressRange: ClosedRange<UInt16> { get }
   
-  mutating func write(_ data: [UInt8])
+  mutating func writeByte(address: UInt16, value: UInt8)
 }

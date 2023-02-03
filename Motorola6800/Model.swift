@@ -156,30 +156,20 @@ struct Memory {
   private var content: [UInt8]
   private let romSize: UInt16
   private let inputDevices: [InputDevice]
+  private let outputDevices: [OutputDevice]
   
   init(
     ram: [UInt8],
     rom: Data,
-    inputDevices: [InputDevice]
+    inputDevices: [InputDevice],
+    outputDevices: [OutputDevice]
   ) {
-    let content = ram
+    self.content = ram
       + Array(repeating: 0, count: 65536 - ram.count - rom.count)
       + rom
-    self.init(
-      content: content,
-      romSize: UInt16(rom.count),
-      inputDevices: inputDevices
-    )
-  }
-  
-  init(
-    content: [UInt8],
-    romSize: UInt16,
-    inputDevices: [InputDevice]
-  ) {
-    self.content = content
-    self.romSize = romSize
+    self.romSize = UInt16(rom.count)
     self.inputDevices = inputDevices
+    self.outputDevices = outputDevices
   }
   
   func readByte(_ address: UInt16) -> UInt8 {
@@ -196,6 +186,9 @@ struct Memory {
   mutating func writeByte(address: UInt16, value: UInt8) {
     guard address < (0xFFFF - romSize) else {
       return
+    }
+    if var device = outputDevices.first(where: { $0.addressRange.contains(address) }) {
+      device.writeByte(address: address, value: value)
     }
     content[Int(address)] = value
   }
