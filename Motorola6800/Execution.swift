@@ -6,7 +6,6 @@ final class Execution {
   private var processor: Processor
   private var memory: Memory
   
-  private var input: [Binding<InputDevice>] = []
   private var output: [Binding<OutputDevice>] = []
   
   private var logging = false
@@ -18,18 +17,8 @@ final class Execution {
     }
   )
   
-  convenience init(ram: [UInt8], rom: Data) {
-    let instructionMap = Dictionary(
-      uniqueKeysWithValues: InstructionSet.all.map { ($0.opCode, $0 )}
-    )
-    self.init(
-      instructionMap: instructionMap,
-      memory: Memory(ram: ram, rom: rom)
-    )
-  }
-  
   init(
-    instructionMap: [UInt8: Instruction],
+    instructionMap: [UInt8: Instruction] = defaultInstructions,
     memory: Memory
   ) {
     self.instructionMap = instructionMap
@@ -52,12 +41,6 @@ final class Execution {
         print(processor.description)
       }
       
-      for device in input {
-        for (index, byte) in device.wrappedValue.read().enumerated() {
-          memory.writeByte(address: device.wrappedValue.startAddress + UInt16(index), value: byte)
-        }
-      }
-      
       let opCode = memory.readByte(processor.PC)
       let instruction = instructionMap[opCode]!
       
@@ -77,10 +60,8 @@ final class Execution {
   }
   
   func run(
-    input: [Binding<InputDevice>],
     output: [Binding<OutputDevice>]
   ) {
-    self.input = input
     self.output = output
     RunLoop.main.add(timer, forMode: .common)
   }
@@ -93,3 +74,7 @@ final class Execution {
     timer.invalidate()
   }
 }
+
+private let defaultInstructions = Dictionary(
+  uniqueKeysWithValues: InstructionSet.all.map { ($0.opCode, $0 )}
+)

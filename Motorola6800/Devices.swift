@@ -1,7 +1,7 @@
 protocol InputDevice {
-  var startAddress: UInt16 { get }
+  var addressRange: ClosedRange<UInt16> { get }
   
-  func read() -> [UInt8]
+  func readByte(address: UInt16) -> UInt8
 }
 
 protocol OutputDevice {

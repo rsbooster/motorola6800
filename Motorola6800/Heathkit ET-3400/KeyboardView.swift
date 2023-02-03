@@ -1,39 +1,38 @@
 import SwiftUI
 
 struct KeyboardView: View {
-  @Binding
-  var keyboard: Keyboard
+  let keyboard: Keyboard
   let reset: () -> Void
   
   var body: some View {
     VStack {
       HStack {
-        KeyboardButton(title: "DO", subtitle: "D", value: $keyboard.key_D)
-        KeyboardButton(title: "EXAM", subtitle: "E", value: $keyboard.key_E)
-        KeyboardButton(title: "FWD", subtitle: "F", value: $keyboard.key_F)
+        KeyboardButton(title: "DO", subtitle: "D", onPress: { keyboard.key_D = $0 })
+        KeyboardButton(title: "EXAM", subtitle: "E", onPress: { keyboard.key_E = $0 })
+        KeyboardButton(title: "FWD", subtitle: "F", onPress: { keyboard.key_F = $0 })
       }
       HStack {
-        KeyboardButton(title: "AUTO", subtitle: "A", value: $keyboard.key_A)
-        KeyboardButton(title: "BACK", subtitle: "B", value: $keyboard.key_B)
-        KeyboardButton(title: "CHAN", subtitle: "C", value: $keyboard.key_C)
+        KeyboardButton(title: "AUTO", subtitle: "A", onPress: { keyboard.key_A = $0 })
+        KeyboardButton(title: "BACK", subtitle: "B", onPress: { keyboard.key_B = $0 })
+        KeyboardButton(title: "CHAN", subtitle: "C", onPress: { keyboard.key_C = $0 })
       }
       HStack {
-        KeyboardButton(title: "RTI", subtitle: "7", value: $keyboard.key_7)
-        KeyboardButton(title: "SS", subtitle: "8", value: $keyboard.key_8)
-        KeyboardButton(title: "BR", subtitle: "9", value: $keyboard.key_9)
+        KeyboardButton(title: "RTI", subtitle: "7", onPress: { keyboard.key_7 = $0 })
+        KeyboardButton(title: "SS", subtitle: "8", onPress: { keyboard.key_8 = $0 })
+        KeyboardButton(title: "BR", subtitle: "9", onPress: { keyboard.key_9 = $0 })
       }
       HStack {
-        KeyboardButton(title: "INDEX", subtitle: "4", value: $keyboard.key_4)
-        KeyboardButton(title: "CC", subtitle: "5", value: $keyboard.key_5)
-        KeyboardButton(title: "SP", subtitle: "6", value: $keyboard.key_6)
+        KeyboardButton(title: "INDEX", subtitle: "4", onPress: { keyboard.key_4 = $0 })
+        KeyboardButton(title: "CC", subtitle: "5", onPress: { keyboard.key_5 = $0 })
+        KeyboardButton(title: "SP", subtitle: "6", onPress: { keyboard.key_6 = $0 })
       }
       HStack {
-        KeyboardButton(title: "ACCA", subtitle: "1", value: $keyboard.key_1)
-        KeyboardButton(title: "ACCB", subtitle: "2", value: $keyboard.key_2)
-        KeyboardButton(title: "PC", subtitle: "3", value: $keyboard.key_3)
+        KeyboardButton(title: "ACCA", subtitle: "1", onPress: { keyboard.key_1 = $0 })
+        KeyboardButton(title: "ACCB", subtitle: "2", onPress: { keyboard.key_2 = $0 })
+        KeyboardButton(title: "PC", subtitle: "3", onPress: { keyboard.key_3 = $0 })
       }
       HStack {
-        KeyboardButton(title: "", subtitle: "0", value: $keyboard.key_0)
+        KeyboardButton(title: "", subtitle: "0", onPress: { keyboard.key_0 = $0 })
         ResetButton(action: reset)
       }
     }
@@ -43,15 +42,14 @@ struct KeyboardView: View {
 struct KeyboardButton: View {
   let title: String
   let subtitle: String
-  @Binding
-  var value: Bool
+  let onPress: (Bool) -> Void
   
   var body: some View {
     let gesture = DragGesture(
       minimumDistance: 0,
       coordinateSpace: .local
-    ).onChanged { _ in value = true }
-      .onEnded { _ in value = false }
+    ).onChanged { _ in onPress(true) }
+      .onEnded { _ in onPress(false) }
     VStack {
       Text(title).font(.system(size: 14))
       Text(subtitle).fontWeight(.bold)

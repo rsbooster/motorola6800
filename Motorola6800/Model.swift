@@ -155,30 +155,38 @@ struct Instruction {
 struct Memory {
   private var content: [UInt8]
   private let romSize: UInt16
+  private let inputDevices: [InputDevice]
   
   init(
-    ram: [UInt8] = [],
-    rom: Data
+    ram: [UInt8],
+    rom: Data,
+    inputDevices: [InputDevice]
   ) {
     let content = ram
       + Array(repeating: 0, count: 65536 - ram.count - rom.count)
       + rom
     self.init(
       content: content,
-      romSize: UInt16(rom.count)
+      romSize: UInt16(rom.count),
+      inputDevices: inputDevices
     )
   }
   
   init(
     content: [UInt8],
-    romSize: UInt16
+    romSize: UInt16,
+    inputDevices: [InputDevice]
   ) {
     self.content = content
     self.romSize = romSize
+    self.inputDevices = inputDevices
   }
   
   func readByte(_ address: UInt16) -> UInt8 {
-    content[Int(address)]
+    if let device = inputDevices.first(where: { $0.addressRange.contains(address) }) {
+      return device.readByte(address: address)
+    }
+    return content[Int(address)]
   }
   
   func readWord(_ address: UInt16) -> UInt16 {

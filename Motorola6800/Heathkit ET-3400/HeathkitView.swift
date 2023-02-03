@@ -1,32 +1,36 @@
 import SwiftUI
 
 struct HeathkitView: View {
-  private let execution = Execution(
-    ram: Samples.decimalConverter,
-    rom: rom
-  )
+  private let keyboard: Keyboard
+  private let execution: Execution
+  
+  init() {
+    self.keyboard = Keyboard()
+    let memory = Memory(
+      ram: Samples.decimalConverter,
+      rom: rom,
+      inputDevices: [keyboard]
+    )
+    self.execution = Execution(
+      memory: memory
+    )
+  }
   
   @State
   var display: Display = .filled
-  @State
-  var keyboard: Keyboard = .empty
+  
   
   var body: some View {
     VStack(spacing: 30) {
       DisplayView(display: display)
-      KeyboardView(keyboard: $keyboard, reset: { execution.reset() })
+      KeyboardView(keyboard: keyboard, reset: { execution.reset() })
     }
     .onAppear {
-      let input = Binding<InputDevice>(
-        get: { keyboard },
-        set: { keyboard = $0 as! Keyboard }
-      )
       let output = Binding<OutputDevice>(
         get: { display },
         set: { display = $0 as! Display }
       )
       execution.run(
-        input: [input],
         output: [output]
       )
     }
