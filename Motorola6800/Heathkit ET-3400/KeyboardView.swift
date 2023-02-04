@@ -54,7 +54,7 @@ struct KeyboardButton: View {
       Text(title).font(.system(size: 14))
       Text(subtitle).fontWeight(.bold)
     }
-      .frame(width: 50, height: 50)
+      .frame(width: 60, height: 60)
       .border(.gray, width: 2)
       .gesture(gesture)
   }
@@ -71,7 +71,7 @@ struct ResetButton: View {
           .font(.system(size: 14))
       }
     )
-    .frame(width: 50, height: 50)
+    .frame(width: 60, height: 60)
     .foregroundColor(.primary)
     .border(.gray, width: 2)
   }

@@ -30,9 +30,11 @@ struct HeathkitView: View {
       DisplayView(display: display)
         .frame(maxHeight: .infinity, alignment: .bottom)
       KeyboardView(keyboard: keyboard, reset: { execution.reset() })
+        .frame(maxHeight: .infinity, alignment: .bottom)
       Text("\(frequency)")
         .font(.footnote)
-        .frame(maxWidth: .infinity, maxHeight: 200, alignment: .bottomTrailing)
+        .monospacedDigit()
+        .frame(maxWidth: .infinity, maxHeight: 30, alignment: .bottomTrailing)
         .padding(10)
     }
     .onAppear {

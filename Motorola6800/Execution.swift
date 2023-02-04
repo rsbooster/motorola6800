@@ -7,7 +7,7 @@ final class Execution {
   
   private var logging = false
   private lazy var timer = Timer.scheduledTimer(
-    withTimeInterval: 1e-6,
+    withTimeInterval: 1e-5,
     repeats: true,
     block: { [weak self] _ in
       self?.step()
