@@ -71,3 +71,10 @@ private extension Color {
     Color(red: 1, green: 0, blue: 0, opacity: 0.05)
   }
 }
+
+struct DisplayView_Previews: PreviewProvider {
+  static var previews: some View {
+    DisplayView(display: .filled)
+  }
+}
+

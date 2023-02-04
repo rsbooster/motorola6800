@@ -1,5 +1,4 @@
 import Foundation
-import SwiftUI
 
 final class Execution {
   private let instructionMap: [UInt8: Instruction]
@@ -15,6 +14,9 @@ final class Execution {
     }
   )
   
+  private var performanceCounter: (time: DispatchTime, cycles: UInt64) = (.now(), cycleCount)
+  private var updateFrequency: (UInt64) -> Void = { _ in }
+   
   init(
     instructionMap: [UInt8: Instruction] = defaultInstructions,
     memory: Memory
@@ -44,9 +46,21 @@ final class Execution {
       
       instruction.action(&processor, &memory)
     }
+    updatePerformanceCounter()
   }
   
-  func run() {
+  private func updatePerformanceCounter() {
+    performanceCounter.cycles -= 1
+    
+    if performanceCounter.cycles == 0 {
+      let frequency = cycleCount * UInt64(10e9) / (DispatchTime.now().uptimeNanoseconds - performanceCounter.time.uptimeNanoseconds)
+      updateFrequency(frequency)
+      performanceCounter = (.now(), cycleCount)
+    }
+  }
+  
+  func run(updateFrequency: @escaping (UInt64) -> Void) {
+    self.updateFrequency = updateFrequency
     RunLoop.main.add(timer, forMode: .common)
   }
   
@@ -62,3 +76,5 @@ final class Execution {
 private let defaultInstructions = Dictionary(
   uniqueKeysWithValues: InstructionSet.all.map { ($0.opCode, $0 )}
 )
+
+private let cycleCount: UInt64 = 100_000

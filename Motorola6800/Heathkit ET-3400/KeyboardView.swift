@@ -50,12 +50,12 @@ struct KeyboardButton: View {
       coordinateSpace: .local
     ).onChanged { _ in onPress(true) }
       .onEnded { _ in onPress(false) }
-    VStack {
+    VStack(spacing: 5) {
       Text(title).font(.system(size: 14))
       Text(subtitle).fontWeight(.bold)
     }
       .frame(width: 50, height: 50)
-      .border(.gray)
+      .border(.gray, width: 2)
       .gesture(gesture)
   }
 }
@@ -73,6 +73,15 @@ struct ResetButton: View {
     )
     .frame(width: 50, height: 50)
     .foregroundColor(.primary)
-    .border(.gray)
+    .border(.gray, width: 2)
+  }
+}
+
+struct KeyboardView_Previews: PreviewProvider {
+  static var previews: some View {
+    KeyboardView(
+      keyboard: .init(),
+      reset: {}
+    )
   }
 }

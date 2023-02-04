@@ -8,6 +8,9 @@ struct HeathkitView: View {
   @State
   var display: Display = .filled
   
+  @State
+  var frequency: UInt64 = 0
+  
   init() {
     self.keyboard = Keyboard()
     self.displayAdapter = DisplayAdapter()
@@ -25,18 +28,17 @@ struct HeathkitView: View {
   var body: some View {
     VStack(spacing: 30) {
       DisplayView(display: display)
+        .frame(maxHeight: .infinity, alignment: .bottom)
       KeyboardView(keyboard: keyboard, reset: { execution.reset() })
+      Text("\(frequency)")
+        .font(.footnote)
+        .frame(maxWidth: .infinity, maxHeight: 200, alignment: .bottomTrailing)
+        .padding(10)
     }
     .onAppear {
       displayAdapter.adaptee = $display
-      execution.run()
+      execution.run(updateFrequency: { frequency = $0 })
     }
-  }
-}
-
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    HeathkitView()
   }
 }
 
@@ -54,5 +56,11 @@ private class DisplayAdapter: OutputDevice {
   
   func writeByte(address: UInt16, value: UInt8) {
     adaptee.wrappedValue.writeByte(address: address, value: value)
+  }
+}
+
+struct HeathkitView_Previews: PreviewProvider {
+  static var previews: some View {
+    HeathkitView()
   }
 }
