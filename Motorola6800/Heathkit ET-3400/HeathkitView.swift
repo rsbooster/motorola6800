@@ -31,9 +31,10 @@ struct HeathkitView: View {
         .frame(maxHeight: .infinity, alignment: .bottom)
       KeyboardView(keyboard: keyboard, reset: { execution.reset() })
         .frame(maxHeight: .infinity, alignment: .bottom)
-      Text("\(frequency)")
+      Text("CPS: \(frequency)")
         .font(.footnote)
         .monospacedDigit()
+        .foregroundColor(.gray)
         .frame(maxWidth: .infinity, maxHeight: 30, alignment: .bottomTrailing)
         .padding(10)
     }

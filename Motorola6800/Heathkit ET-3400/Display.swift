@@ -84,7 +84,7 @@ extension Display {
   }
 }
 
-private extension Display.Indicator {
+extension Display.Indicator {
   static var filled: Self {
     Display.Indicator(
       a: true,

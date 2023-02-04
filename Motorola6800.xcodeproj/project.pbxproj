@@ -40,6 +40,7 @@
 		8CB86ADB29686641007823D0 /* LDA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86ADA29686641007823D0 /* LDA.swift */; };
 		8CB86ADD29686672007823D0 /* WAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86ADC29686672007823D0 /* WAI.swift */; };
 		8CC3B05B298DC94B00F7F608 /* BranchCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3B05A298DC94B00F7F608 /* BranchCalculator.swift */; };
+		8CC3B05D298E951D00F7F608 /* SegmentIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3B05C298E951D00F7F608 /* SegmentIndicatorView.swift */; };
 		8CEBEB1F297F4DC900FE9D0A /* DEC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB1E297F4DC900FE9D0A /* DEC.swift */; };
 		8CEBEB212980ABEA00FE9D0A /* DES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB202980ABEA00FE9D0A /* DES.swift */; };
 		8CEBEB232980AC4100FE9D0A /* DEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB222980AC4100FE9D0A /* DEX.swift */; };
@@ -140,6 +141,7 @@
 		8CB86ADA29686641007823D0 /* LDA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDA.swift; sourceTree = "<group>"; };
 		8CB86ADC29686672007823D0 /* WAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAI.swift; sourceTree = "<group>"; };
 		8CC3B05A298DC94B00F7F608 /* BranchCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchCalculator.swift; sourceTree = "<group>"; };
+		8CC3B05C298E951D00F7F608 /* SegmentIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentIndicatorView.swift; sourceTree = "<group>"; };
 		8CEBEB1E297F4DC900FE9D0A /* DEC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEC.swift; sourceTree = "<group>"; };
 		8CEBEB202980ABEA00FE9D0A /* DES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DES.swift; sourceTree = "<group>"; };
 		8CEBEB222980AC4100FE9D0A /* DEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEX.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				8CEBF14C2987180B00FE9D0A /* Keyboard.swift */,
 				8CB86AA729683776007823D0 /* HeathkitView.swift */,
 				8C9A5B322989E3AD00742D69 /* DisplayView.swift */,
+				8CC3B05C298E951D00F7F608 /* SegmentIndicatorView.swift */,
 				8C9A5B302989E38100742D69 /* KeyboardView.swift */,
 				8CEBF1482985DC6600FE9D0A /* et3400rom.bin */,
 			);
@@ -510,6 +513,7 @@
 				8CEBF13C2985D11800FE9D0A /* TAP.swift in Sources */,
 				8C9A5B312989E38100742D69 /* KeyboardView.swift in Sources */,
 				8CEBF1302984872100FE9D0A /* STA.swift in Sources */,
+				8CC3B05D298E951D00F7F608 /* SegmentIndicatorView.swift in Sources */,
 				8CF0A8A62976104500A03033 /* ASR.swift in Sources */,
 				8C755A3029699ABC00827729 /* DAA.swift in Sources */,
 				8CB86AA829683776007823D0 /* HeathkitView.swift in Sources */,
