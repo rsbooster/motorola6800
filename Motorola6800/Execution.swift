@@ -42,7 +42,10 @@ final class Execution {
       }
       
       let opCode = memory.readByte(processor.PC)
-      let instruction = instructionMap[opCode]!
+      guard let instruction = instructionMap[opCode] else {
+        reset()
+        return
+      }
       
       instruction.action(&processor, &memory)
     }
@@ -66,6 +69,7 @@ final class Execution {
   
   func reset() {
     processor.PC = memory.readWord(0xFFFE)
+    processor.emulated.waitingForInterrupt = false
   }
   
   deinit {
