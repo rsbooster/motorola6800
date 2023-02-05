@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct HeathkitView: View {
+  @Environment(\.scenePhase) var scenePhase
+  
   private let keyboard: Keyboard
   private let displayAdapter: DisplayAdapter
   private let execution: Execution
@@ -38,9 +40,16 @@ struct HeathkitView: View {
         .frame(maxWidth: .infinity, maxHeight: 30, alignment: .bottomTrailing)
         .padding(10)
     }
-    .onAppear {
-      displayAdapter.adaptee = $display
-      execution.run(updateFrequency: { frequency = $0 })
+    .onChange(of: scenePhase) { phase in
+      switch phase {
+      case .active:
+        displayAdapter.adaptee = $display
+        execution.run(updateFrequency: { frequency = $0 })
+      case .inactive, .background:
+        execution.stop()
+      default:
+        break
+      }
     }
   }
 }

@@ -6,13 +6,14 @@ final class Execution {
   private var memory: Memory
   
   private var logging = false
-  private lazy var timer = Timer.scheduledTimer(
-    withTimeInterval: 1e-5,
-    repeats: true,
-    block: { [weak self] _ in
-      self?.step()
+  private var timer: Timer? {
+    didSet {
+      oldValue?.invalidate()
+      if let timer {
+        RunLoop.main.add(timer, forMode: .common)
+      }
     }
-  )
+  }
   
   private var performanceCounter: (time: DispatchTime, cycles: UInt64) = (.now(), cycleCount)
   private var updateFrequency: (UInt64) -> Void = { _ in }
@@ -62,9 +63,23 @@ final class Execution {
     }
   }
   
+  private func makeTimer() -> Timer {
+    Timer.scheduledTimer(
+      withTimeInterval: 1e-5,
+      repeats: true,
+      block: { [weak self] _ in
+        self?.step()
+      }
+    )
+  }
+  
   func run(updateFrequency: @escaping (UInt64) -> Void) {
     self.updateFrequency = updateFrequency
-    RunLoop.main.add(timer, forMode: .common)
+    self.timer = makeTimer()
+  }
+  
+  func stop() {
+    timer = nil
   }
   
   func reset() {
@@ -73,7 +88,7 @@ final class Execution {
   }
   
   deinit {
-    timer.invalidate()
+    timer = nil
   }
 }
 
