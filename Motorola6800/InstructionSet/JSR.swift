@@ -25,7 +25,7 @@ extension InstructionSet {
         m.pushWord(stackPointer: &p.SP, value: PC + 2)
         
         let offset = UInt16(m.readByte(PC + 1))
-        p.PC = X + offset
+        p.PC = X &+ offset
       }
     ),
   ]

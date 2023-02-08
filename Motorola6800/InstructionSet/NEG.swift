@@ -44,7 +44,7 @@ extension InstructionSet {
         
         let (value, address) = m.readOperandExtended8(PC + 1)
         
-        let R = 0 - value
+        let R = 0 &- value
         
         p.updateCC(result: R)
         
@@ -63,7 +63,7 @@ extension InstructionSet {
         
         let (value, address) = m.readOperandIndexed8(PC + 1, X: X)
         
-        let R = 0 - value
+        let R = 0 &- value
         
         p.updateCC(result: R)
         

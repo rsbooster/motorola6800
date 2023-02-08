@@ -25,7 +25,7 @@ extension InstructionSet {
         
         let offset = UInt16(m.readByte(PC + 1))
         
-        p.PC = X + offset
+        p.PC = X &+ offset
       }
     ),
   ]

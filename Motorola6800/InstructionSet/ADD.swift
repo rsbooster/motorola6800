@@ -11,7 +11,7 @@ extension InstructionSet {
         let (A, _, _, PC, _, _) = p.tuple()
         
         let M = m.readByte(PC + 1)
-        let R = A + M
+        let R = A &+ M
         
         p.CC.update(X: A, M: M, R: R)
         
@@ -28,7 +28,7 @@ extension InstructionSet {
         let (A, _, _, PC, _, _) = p.tuple()
         
         let M: UInt8 = m.readOperandDirect(PC + 1)
-        let R = A + M
+        let R = A &+ M
         
         p.CC.update(X: A, M: M, R: R)
         
@@ -45,7 +45,7 @@ extension InstructionSet {
         let (A, _, _, PC, _, _) = p.tuple()
         
         let M: UInt8 = m.readOperandExtended(PC + 1)
-        let R = A + M
+        let R = A &+ M
         
         p.CC.update(X: A, M: M, R: R)
         
@@ -62,7 +62,7 @@ extension InstructionSet {
         let (A, _, X, PC, _, _) = p.tuple()
         
         let M: UInt8 = m.readOperandIndexed(PC + 1, X: X)
-        let R = A + M
+        let R = A &+ M
         
         p.CC.update(X: A, M: M, R: R)
         
@@ -80,7 +80,7 @@ extension InstructionSet {
         let (_, B, _, PC, _, _) = p.tuple()
         
         let M = m.readByte(PC + 1)
-        let R = B + M
+        let R = B &+ M
         
         p.CC.update(X: B, M: M, R: R)
         
@@ -97,7 +97,7 @@ extension InstructionSet {
         let (_, B, _, PC, _, _) = p.tuple()
         
         let M: UInt8 = m.readOperandDirect(PC + 1)
-        let R = B + M
+        let R = B &+ M
         
         p.CC.update(X: B, M: M, R: R)
         
@@ -114,7 +114,7 @@ extension InstructionSet {
         let (_, B, _, PC, _, _) = p.tuple()
         
         let M: UInt8 = m.readOperandExtended(PC + 1)
-        let R = B + M
+        let R = B &+ M
         
         p.CC.update(X: B, M: M, R: R)
         
@@ -131,7 +131,7 @@ extension InstructionSet {
         let (_, B, X, PC, _, _) = p.tuple()
         
         let M: UInt8 = m.readOperandIndexed(PC + 1, X: X)
-        let R = B + M
+        let R = B &+ M
         
         p.CC.update(X: B, M: M, R: R)
         

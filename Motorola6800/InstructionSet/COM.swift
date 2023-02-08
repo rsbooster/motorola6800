@@ -10,7 +10,7 @@ extension InstructionSet {
       action: { p, _ in
         let (A, B, X, PC, SP, CC) = p.tuple()
         
-        let R = 0xFF - A
+        let R = 0xFF &- A
         
         p.updateCC(result: R)
         
@@ -26,7 +26,7 @@ extension InstructionSet {
       action: { p, _ in
         let (A, B, X, PC, SP, CC) = p.tuple()
         
-        let R = 0xFF - B
+        let R = 0xFF &- B
         
         p.updateCC(result: R)
         
@@ -44,7 +44,7 @@ extension InstructionSet {
         
         let (value, address) = m.readOperandExtended8(p.PC + 1)
         
-        let R = 0xFF - value
+        let R = 0xFF &- value
         
         p.updateCC(result: R)
         
@@ -63,7 +63,7 @@ extension InstructionSet {
         
         let (value, address) = m.readOperandIndexed8(p.PC + 1, X: X)
         
-        let R = 0xFF - value
+        let R = 0xFF &- value
         
         p.updateCC(result: R)
         
