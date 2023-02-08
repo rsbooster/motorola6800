@@ -14,8 +14,6 @@ extension InstructionSet {
         let R = A & M
         
         p.CC.update(R: R)
-        
-        p.A = R
         p.PC += 2
       }
     ),
@@ -31,8 +29,6 @@ extension InstructionSet {
         let R = A & M
         
         p.CC.update(R: R)
-        
-        p.A = R
         p.PC += 2
       }
     ),
@@ -48,8 +44,6 @@ extension InstructionSet {
         let R = A & M
         
         p.CC.update(R: R)
-        
-        p.A = R
         p.PC += 3
       }
     ),
@@ -65,8 +59,6 @@ extension InstructionSet {
         let R = A & M
         
         p.CC.update(R: R)
-        
-        p.A = R
         p.PC += 2
       }
     ),
@@ -83,8 +75,6 @@ extension InstructionSet {
         let R = B & M
         
         p.CC.update(R: R)
-        
-        p.B = R
         p.PC += 2
       }
     ),
@@ -100,8 +90,6 @@ extension InstructionSet {
         let R = B & M
         
         p.CC.update(R: R)
-        
-        p.B = R
         p.PC += 2
       }
     ),
@@ -117,8 +105,6 @@ extension InstructionSet {
         let R = B & M
         
         p.CC.update(R: R)
-        
-        p.B = R
         p.PC += 3
       }
     ),
@@ -134,8 +120,6 @@ extension InstructionSet {
         let R = B & M
         
         p.CC.update(R: R)
-        
-        p.B = R
         p.PC += 2
       }
     ),
