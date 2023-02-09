@@ -37,29 +37,30 @@ final class Execution {
   }
   
   func step() {
-    if !processor.emulated.waitingForInterrupt {
-      if logging {
-        print(processor.description)
-      }
-      
-      let opCode = memory.readByte(processor.PC)
-      guard let instruction = instructionMap[opCode] else {
-        reset()
-        return
-      }
-      
-      instruction.action(&processor, &memory)
+    guard !processor.emulated.waitingForInterrupt else {
+      return
     }
-    updatePerformanceCounter()
+    
+    if logging {
+      print(processor.description)
+    }
+    
+    let opCode = memory.readByte(processor.PC)
+    guard let instruction = instructionMap[opCode] else {
+      reset()
+      return
+    }
+    instruction.action(&processor, &memory)
+    updatePerformanceCounter(elapsedCycles: instruction.executionTime)
   }
   
-  private func updatePerformanceCounter() {
-    performanceCounter.cycles -= 1
-    
-    if performanceCounter.cycles == 0 {
+  private func updatePerformanceCounter(elapsedCycles: UInt8) {
+    if performanceCounter.cycles <= elapsedCycles {
       let frequency = cycleCount * UInt64(10e9) / (DispatchTime.now().uptimeNanoseconds - performanceCounter.time.uptimeNanoseconds)
       updateFrequency(frequency)
       performanceCounter = (.now(), cycleCount)
+    } else {
+      performanceCounter.cycles -= UInt64(elapsedCycles)
     }
   }
   
