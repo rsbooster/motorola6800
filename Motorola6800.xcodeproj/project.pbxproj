@@ -43,6 +43,7 @@
 		8CC3B05D298E951D00F7F608 /* SegmentIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3B05C298E951D00F7F608 /* SegmentIndicatorView.swift */; };
 		8CC3B4402997082300F7F608 /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3B43F2997082300F7F608 /* Terminal.swift */; };
 		8CC3B4422997D7FD00F7F608 /* TerminalUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3B4412997D7FD00F7F608 /* TerminalUsage.swift */; };
+		8CC3B44429983F0700F7F608 /* Rom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3B44329983F0700F7F608 /* Rom.swift */; };
 		8CEBEB1F297F4DC900FE9D0A /* DEC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB1E297F4DC900FE9D0A /* DEC.swift */; };
 		8CEBEB212980ABEA00FE9D0A /* DES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB202980ABEA00FE9D0A /* DES.swift */; };
 		8CEBEB232980AC4100FE9D0A /* DEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB222980AC4100FE9D0A /* DEX.swift */; };
@@ -146,6 +147,7 @@
 		8CC3B05C298E951D00F7F608 /* SegmentIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentIndicatorView.swift; sourceTree = "<group>"; };
 		8CC3B43F2997082300F7F608 /* Terminal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
 		8CC3B4412997D7FD00F7F608 /* TerminalUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalUsage.swift; sourceTree = "<group>"; };
+		8CC3B44329983F0700F7F608 /* Rom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rom.swift; sourceTree = "<group>"; };
 		8CEBEB1E297F4DC900FE9D0A /* DEC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEC.swift; sourceTree = "<group>"; };
 		8CEBEB202980ABEA00FE9D0A /* DES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DES.swift; sourceTree = "<group>"; };
 		8CEBEB222980AC4100FE9D0A /* DEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEX.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				8CB86AD529686510007823D0 /* InstructionSet */,
 				8CB86AA529683776007823D0 /* Motorola6800App.swift */,
 				8CB86ACF296837B5007823D0 /* Model.swift */,
+				8CC3B44329983F0700F7F608 /* Rom.swift */,
 				8CB86AD12968444B007823D0 /* Extensions.swift */,
 				8CB86AD62968652E007823D0 /* InstructionSet.swift */,
 				8C9A595E29871CCB00742D69 /* Devices.swift */,
@@ -497,6 +500,7 @@
 				8CEBEB1F297F4DC900FE9D0A /* DEC.swift in Sources */,
 				8CF0A5E62974BA1800A03033 /* AND.swift in Sources */,
 				8CB86AD0296837B5007823D0 /* Model.swift in Sources */,
+				8CC3B44429983F0700F7F608 /* Rom.swift in Sources */,
 				8CEBEB2D2981DC3D00FE9D0A /* ADC.swift in Sources */,
 				8C755A38296CDF4100827729 /* COM.swift in Sources */,
 				8CEBF1362985623600FE9D0A /* SUB.swift in Sources */,

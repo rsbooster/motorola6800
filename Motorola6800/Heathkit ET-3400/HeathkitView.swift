@@ -20,8 +20,7 @@ struct HeathkitView: View {
     self.terminal = Terminal()
     let memory = Memory(
       ram: Samples.terminalUsage,
-      rom: rom,
-      inputDevices: [keyboard],
+      inputDevices: [keyboard, rom],
       outputDevices: [displayAdapter, terminal]
     )
     self.execution = Execution(
@@ -56,9 +55,10 @@ struct HeathkitView: View {
   }
 }
 
-private let rom: Data = {
+private let rom: Rom = {
   let url = Bundle.main.url(forResource: "et3400rom", withExtension: "bin")!
-  return try! Data(contentsOf: url)
+  let data = try! Data(contentsOf: url)
+  return Rom(baseAddress: 0xFC00, data: data)
 }()
 
 private class DisplayAdapter: OutputDevice {
