@@ -12,7 +12,7 @@ final class Terminal {
   var text: String = ""
   
   init(
-    speed: UInt = 4800,
+    speed: UInt = 80,
     cpuFrequency: UInt = 1_000_000,
     bitNumber: UInt8 = 0
   ) {
@@ -23,7 +23,7 @@ final class Terminal {
 
 extension Terminal: OutputDevice {
   var addressRange: ClosedRange<UInt16> {
-    0x1001...0x1001
+    0x1000...0x1000
   }
   
   func writeByte(address: UInt16, value: UInt8) {

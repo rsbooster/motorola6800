@@ -12,7 +12,7 @@ extension InstructionSet {
         
         let R = A >> 1
         
-        p.updateCC(result: R, carry: A[7])
+        p.updateCC(result: R, carry: A[0])
         
         p.A = R
         p.PC += 1
@@ -28,7 +28,7 @@ extension InstructionSet {
         
         let R = B >> 1
         
-        p.updateCC(result: R, carry: B[7])
+        p.updateCC(result: R, carry: B[0])
         
         p.B = R
         p.PC += 1
@@ -44,7 +44,7 @@ extension InstructionSet {
         
         let R = value >> 1
         
-        p.updateCC(result: R, carry: value[7])
+        p.updateCC(result: R, carry: value[0])
         
         m.writeByte(address: address, value: R)
         
@@ -63,7 +63,7 @@ extension InstructionSet {
         
         let R = value >> 1
         
-        p.updateCC(result: R, carry: value[7])
+        p.updateCC(result: R, carry: value[0])
         
         m.writeByte(address: address, value: R)
         
