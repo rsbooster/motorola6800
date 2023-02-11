@@ -17,6 +17,7 @@ final class Execution {
   
   private var performanceCounter: (time: DispatchTime, cycles: UInt64) = (.now(), cycleCount)
   private var updateFrequency: (UInt64) -> Void = { _ in }
+  private var remainingOpCycles: UInt8 = 0
    
   init(
     instructionMap: [UInt8: Instruction] = defaultInstructions,
@@ -41,6 +42,14 @@ final class Execution {
       return
     }
     
+    memory.tick()
+    updatePerformanceCounter()
+    
+    guard remainingOpCycles == 0 else {
+      remainingOpCycles -= 1
+      return
+    }
+    
     if logging {
       print(processor.description)
     }
@@ -51,10 +60,10 @@ final class Execution {
       return
     }
     instruction.action(&processor, &memory)
-    updatePerformanceCounter(elapsedCycles: instruction.executionTime)
+    remainingOpCycles = instruction.executionTime
   }
   
-  private func updatePerformanceCounter(elapsedCycles: UInt8) {
+  private func updatePerformanceCounter(elapsedCycles: UInt8 = 1) {
     if performanceCounter.cycles <= elapsedCycles {
       let frequency = cycleCount * UInt64(10e9) / (DispatchTime.now().uptimeNanoseconds - performanceCounter.time.uptimeNanoseconds)
       updateFrequency(frequency)

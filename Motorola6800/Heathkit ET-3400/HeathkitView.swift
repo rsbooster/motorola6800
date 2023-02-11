@@ -5,6 +5,7 @@ struct HeathkitView: View {
   
   private let keyboard: Keyboard
   private let displayAdapter: DisplayAdapter
+  private let terminal: Terminal
   private let execution: Execution
   
   @State
@@ -16,11 +17,12 @@ struct HeathkitView: View {
   init() {
     self.keyboard = Keyboard()
     self.displayAdapter = DisplayAdapter()
+    self.terminal = Terminal()
     let memory = Memory(
-      ram: Samples.branchCalculator,
+      ram: Samples.terminalUsage,
       rom: rom,
       inputDevices: [keyboard],
-      outputDevices: [displayAdapter]
+      outputDevices: [displayAdapter, terminal]
     )
     self.execution = Execution(
       memory: memory

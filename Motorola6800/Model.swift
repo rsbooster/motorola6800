@@ -219,6 +219,11 @@ struct Memory {
     stackPointer += 2
     return value
   }
+  
+  func tick() {
+    inputDevices.forEach { $0.tick() }
+    outputDevices.forEach { $0.tick() }
+  }
 }
 
 extension Memory {
