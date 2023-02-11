@@ -44,6 +44,8 @@
 		8CC3B4402997082300F7F608 /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3B43F2997082300F7F608 /* Terminal.swift */; };
 		8CC3B4422997D7FD00F7F608 /* TerminalUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3B4412997D7FD00F7F608 /* TerminalUsage.swift */; };
 		8CC3B44429983F0700F7F608 /* Rom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3B44329983F0700F7F608 /* Rom.swift */; };
+		8CC3B4472998414900F7F608 /* eta_monitor.bin in Resources */ = {isa = PBXBuildFile; fileRef = 8CC3B4452998414900F7F608 /* eta_monitor.bin */; };
+		8CC3B4482998414900F7F608 /* eta_basic.bin in Resources */ = {isa = PBXBuildFile; fileRef = 8CC3B4462998414900F7F608 /* eta_basic.bin */; };
 		8CEBEB1F297F4DC900FE9D0A /* DEC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB1E297F4DC900FE9D0A /* DEC.swift */; };
 		8CEBEB212980ABEA00FE9D0A /* DES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB202980ABEA00FE9D0A /* DES.swift */; };
 		8CEBEB232980AC4100FE9D0A /* DEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBEB222980AC4100FE9D0A /* DEX.swift */; };
@@ -148,6 +150,8 @@
 		8CC3B43F2997082300F7F608 /* Terminal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
 		8CC3B4412997D7FD00F7F608 /* TerminalUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalUsage.swift; sourceTree = "<group>"; };
 		8CC3B44329983F0700F7F608 /* Rom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rom.swift; sourceTree = "<group>"; };
+		8CC3B4452998414900F7F608 /* eta_monitor.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = eta_monitor.bin; sourceTree = "<group>"; };
+		8CC3B4462998414900F7F608 /* eta_basic.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = eta_basic.bin; sourceTree = "<group>"; };
 		8CEBEB1E297F4DC900FE9D0A /* DEC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEC.swift; sourceTree = "<group>"; };
 		8CEBEB202980ABEA00FE9D0A /* DES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DES.swift; sourceTree = "<group>"; };
 		8CEBEB222980AC4100FE9D0A /* DEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEX.swift; sourceTree = "<group>"; };
@@ -359,8 +363,10 @@
 				8C9A5B322989E3AD00742D69 /* DisplayView.swift */,
 				8CC3B05C298E951D00F7F608 /* SegmentIndicatorView.swift */,
 				8C9A5B302989E38100742D69 /* KeyboardView.swift */,
-				8CEBF1482985DC6600FE9D0A /* et3400rom.bin */,
 				8CC3B43F2997082300F7F608 /* Terminal.swift */,
+				8CEBF1482985DC6600FE9D0A /* et3400rom.bin */,
+				8CC3B4452998414900F7F608 /* eta_monitor.bin */,
+				8CC3B4462998414900F7F608 /* eta_basic.bin */,
 			);
 			path = "Heathkit ET-3400";
 			sourceTree = "<group>";
@@ -472,6 +478,8 @@
 				8CB86AAD29683778007823D0 /* Preview Assets.xcassets in Resources */,
 				8CB86AAA29683778007823D0 /* Assets.xcassets in Resources */,
 				8CEBF1492985DC6600FE9D0A /* et3400rom.bin in Resources */,
+				8CC3B4482998414900F7F608 /* eta_basic.bin in Resources */,
+				8CC3B4472998414900F7F608 /* eta_monitor.bin in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

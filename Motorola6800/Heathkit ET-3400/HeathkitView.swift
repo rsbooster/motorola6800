@@ -18,9 +18,15 @@ struct HeathkitView: View {
     self.keyboard = Keyboard()
     self.displayAdapter = DisplayAdapter()
     self.terminal = Terminal()
+    let inputDevices: [InputDevice] = [
+      keyboard,
+      Rom(file: "eta_monitor", baseAddress: 0x1400),
+      Rom(file: "eta_basic", baseAddress: 0x1C00),
+      Rom(file: "et3400rom", baseAddress: 0xFC00),
+    ]
     let memory = Memory(
       ram: Samples.terminalUsage,
-      inputDevices: [keyboard, rom],
+      inputDevices: inputDevices,
       outputDevices: [displayAdapter, terminal]
     )
     self.execution = Execution(
@@ -55,11 +61,13 @@ struct HeathkitView: View {
   }
 }
 
-private let rom: Rom = {
-  let url = Bundle.main.url(forResource: "et3400rom", withExtension: "bin")!
-  let data = try! Data(contentsOf: url)
-  return Rom(baseAddress: 0xFC00, data: data)
-}()
+private extension Rom {
+  init(file: String, baseAddress: UInt16) {
+    let url = Bundle.main.url(forResource: file, withExtension: "bin")!
+    let data = try! Data(contentsOf: url)
+    self.init(baseAddress: baseAddress, data: data)
+  }
+}
 
 private class DisplayAdapter: OutputDevice {
   var adaptee: Binding<Display> = .constant(.filled)
