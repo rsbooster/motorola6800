@@ -12,7 +12,7 @@ final class Terminal {
   var text: String = ""
   
   init(
-    speed: UInt = 80,
+    speed: UInt = 3740,
     cpuFrequency: UInt = 1_000_000,
     bitNumber: UInt8 = 0
   ) {
@@ -52,6 +52,12 @@ extension Terminal: OutputDevice {
         state = .receive(accumulator: accumulator, waitCycles: waitCycles - 1)
       }
     }
+  }
+}
+
+extension Terminal: InputDevice {
+  func readByte(address: UInt16) -> UInt8 {
+    0x02
   }
 }
 

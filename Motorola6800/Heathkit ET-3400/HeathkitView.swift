@@ -20,6 +20,7 @@ struct HeathkitView: View {
     self.terminal = Terminal()
     let inputDevices: [InputDevice] = [
       keyboard,
+      terminal,
       Rom(file: "eta_monitor", baseAddress: 0x1400),
       Rom(file: "eta_basic", baseAddress: 0x1C00),
       Rom(file: "et3400rom", baseAddress: 0xFC00),
