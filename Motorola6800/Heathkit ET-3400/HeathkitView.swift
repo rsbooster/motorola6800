@@ -66,33 +66,34 @@ struct HeathkitView: View {
         ).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
           .lineLimit(11, reservesSpace: true)
           .padding(10)
-        TextField(
-          "Keyboard",
-          text: Binding(
-            get: { "" },
-            set: {
-              sendDebouncer.apply(
-                value: $0 == "" ? "\r" : $0
-              )
-            }
+        HStack {
+          TextField(
+            "Keyboard",
+            text: Binding(
+              get: { "" },
+              set: {
+                sendDebouncer.apply(
+                  value: $0 == "" ? "\r" : $0
+                )
+              }
+            )
           )
-        ).padding(10)
-          .disableAutocorrection(true)
-          .textInputAutocapitalization(.never)
-        Button("Send sample") {
-          [
-            "G 1C00\r",
-            "100 LET I=0\r",
-            "200 PRINT \"HEATH TINY BASIC\"\r",
-            "300 I=I+1\r",
-            "400 IF I<5 GOTO 200\r",
-            "500 END\r",
-            "RUN\r",
-          ].forEach {
-            terminal.send($0)
+            .disableAutocorrection(true)
+            .textInputAutocapitalization(.never)
+          Button("Send sample") {
+            [
+              "G 1C00\r",
+              "100 LET I=0\r",
+              "200 PRINT \"HEATH TINY BASIC\"\r",
+              "300 I=I+1\r",
+              "400 IF I<5 GOTO 200\r",
+              "500 END\r",
+              "RUN\r",
+            ].forEach {
+              terminal.send($0)
+            }
           }
-        }.frame(maxWidth: .infinity, alignment: .leading)
-          .padding(10)
+        }.padding(20)
       }
     }
     .onChange(of: scenePhase) { phase in
