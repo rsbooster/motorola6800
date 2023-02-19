@@ -72,11 +72,14 @@ struct HeathkitView: View {
             text: Binding(
               get: { "" },
               set: {
-                sendDebouncer.apply(
-                  value: $0 == "" ? "\r" : $0
-                )
+                sendDebouncer.apply(value: $0.uppercased())
               }
-            )
+            ),
+            onCommit: {
+              sendDebouncer.apply(
+                value: "\r"
+              )
+            }
           )
             .disableAutocorrection(true)
             .textInputAutocapitalization(.never)
