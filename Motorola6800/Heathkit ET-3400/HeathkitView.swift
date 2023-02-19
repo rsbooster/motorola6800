@@ -7,11 +7,12 @@ struct HeathkitView: View {
   private let displayAdapter: OutputAdapter<Display>
   private let terminal: Terminal
   private let execution: Execution
+  private let sendDebouncer: Debouncer<String>
   
   @State
   var trainerVisible = true
   @State
-  var terminalText: String = ""
+  var receiveText: String = ""
   @State
   var display: Display = .filled
   @State
@@ -38,6 +39,7 @@ struct HeathkitView: View {
     self.execution = Execution(
       memory: memory
     )
+    self.sendDebouncer = Debouncer(action: terminal.send)
   }
   
   var body: some View {
@@ -60,9 +62,35 @@ struct HeathkitView: View {
           .padding(10)
       } else {
         Text(
-          terminalText
+          receiveText
         ).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
           .lineLimit(11, reservesSpace: true)
+          .padding(10)
+        TextField(
+          text: Binding(
+            get: { "" },
+            set: {
+              sendDebouncer.apply(
+                value: $0 == "" ? "\r" : $0
+              )
+            }
+          )
+        ) {
+          Text("Keyboard")
+        }.padding(10)
+        Button("Send sample") {
+          [
+            "G 1C00\r",
+            "100 LET I=0\r",
+            "200 PRINT \"HEATH TINY BASIC\"\r",
+            "300 I=I+1\r",
+            "400 IF I<5 GOTO 200\r",
+            "500 END\r",
+            "RUN\r",
+          ].forEach {
+            terminal.send($0)
+          }
+        }.frame(maxWidth: .infinity, alignment: .leading)
           .padding(10)
       }
     }
@@ -74,28 +102,13 @@ struct HeathkitView: View {
           guard symbol != "\0" else {
             return
           }
-          terminalText = (terminalText + symbol).takeLastLines(10)
+          receiveText = (receiveText + symbol).takeLastLines(10)
         }
         execution.run(updateFrequency: { frequency = $0 })
       case .inactive, .background:
         execution.stop()
       default:
         break
-      }
-    }.onAppear {
-      DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-        let strings: [String] = [
-          "G 1C00\r",
-          "100 LET I=0\r",
-          "200 PRINT \"HEATH TINY BASIC\"\r",
-          "300 I=I+1\r",
-          "400 IF I<5 GOTO 200\r",
-          "500 END\r",
-          "RUN\r",
-        ]
-        strings.forEach {
-          terminal.send($0)
-        }
       }
     }
   }
@@ -124,5 +137,24 @@ private class OutputAdapter<T: OutputDevice>: OutputDevice {
 struct HeathkitView_Previews: PreviewProvider {
   static var previews: some View {
     HeathkitView()
+  }
+}
+
+private final class Debouncer<T: Equatable> {
+  let action: (T) -> Void
+  
+  var lastValue: T?
+  
+  init(action: @escaping (T) -> Void) {
+    self.action = action
+  }
+  
+  func apply(value: T) {
+    guard lastValue != value else {
+      lastValue = nil
+      return
+    }
+    action(value)
+    lastValue = value
   }
 }
