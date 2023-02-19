@@ -32,7 +32,7 @@ struct HeathkitView: View {
       Rom(file: "et3400rom", baseAddress: 0xFC00),
     ]
     let memory = Memory(
-      ram: Samples.terminalUsage,
+      ram: Samples.decimalConverter,
       inputDevices: inputDevices,
       outputDevices: [displayAdapter, terminal]
     )
