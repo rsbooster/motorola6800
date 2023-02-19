@@ -50,7 +50,7 @@ extension String {
   ) -> String {
     let lines = split(separator: lineSeparator, omittingEmptySubsequences: false)
     return lines
-      .dropFirst(max(lines.count - number, 0))
+      .dropFirst(Swift.max(lines.count - number, 0))
       .joined(separator: lineSeparator)
   }
 }

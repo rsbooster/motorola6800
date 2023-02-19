@@ -33,7 +33,6 @@ final class Receiver {
         if latch {
           let symbol = String(bytes: [accumulator.asByte & receiveMask], encoding: .ascii)!
           onReceive?(symbol)
-          print("\(symbol)", terminator: "")
         }
         state = .idle
       } else {

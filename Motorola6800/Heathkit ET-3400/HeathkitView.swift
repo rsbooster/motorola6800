@@ -9,6 +9,8 @@ struct HeathkitView: View {
   private let execution: Execution
   
   @State
+  var trainerVisible = true
+  @State
   var terminalText: String = ""
   @State
   var display: Display = .filled
@@ -40,26 +42,38 @@ struct HeathkitView: View {
   
   var body: some View {
     VStack(spacing: 30) {
-      Text(
-        terminalText
-      ).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .lineLimit(10, reservesSpace: true)
-      DisplayView(display: display)
-        .frame(maxHeight: .infinity, alignment: .bottom)
-      KeyboardView(keyboard: keyboard, reset: { execution.reset() })
-        .frame(maxHeight: .infinity, alignment: .bottom)
-      Text("CPS: \(frequency)")
-        .font(.footnote)
-        .monospacedDigit()
-        .foregroundColor(.gray)
-        .frame(maxWidth: .infinity, maxHeight: 30, alignment: .bottomTrailing)
-        .padding(10)
+      Button(trainerVisible ? "Trainer" : "Terminal") {
+        trainerVisible.toggle()
+      }.frame(maxWidth: .infinity, alignment: .trailing)
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 50))
+      
+      if trainerVisible {
+        DisplayView(display: display)
+          .frame(maxHeight: .infinity, alignment: .bottom)
+        KeyboardView(keyboard: keyboard, reset: { execution.reset() })
+          .frame(maxHeight: .infinity, alignment: .bottom)
+        Text("CPS: \(frequency)")
+          .font(.footnote)
+          .monospacedDigit()
+          .foregroundColor(.gray)
+          .frame(maxWidth: .infinity, maxHeight: 30, alignment: .bottomTrailing)
+          .padding(10)
+      } else {
+        Text(
+          terminalText
+        ).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+          .lineLimit(11, reservesSpace: true)
+          .padding(10)
+      }
     }
     .onChange(of: scenePhase) { phase in
       switch phase {
       case .active:
         displayAdapter.adaptee = $display
         terminal.onReceive = { symbol in
+          guard symbol != "\0" else {
+            return
+          }
           terminalText = (terminalText + symbol).takeLastLines(10)
         }
         execution.run(updateFrequency: { frequency = $0 })
