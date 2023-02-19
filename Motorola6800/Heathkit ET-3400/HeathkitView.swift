@@ -47,7 +47,7 @@ struct HeathkitView: View {
       Button(trainerVisible ? "Trainer" : "Terminal") {
         trainerVisible.toggle()
       }.frame(maxWidth: .infinity, alignment: .trailing)
-        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 50))
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
       
       if trainerVisible {
         DisplayView(display: display)
@@ -64,7 +64,7 @@ struct HeathkitView: View {
         Text(
           receiveText
         ).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-          .lineLimit(11, reservesSpace: true)
+          .font(.system(size: 11).monospaced())
           .padding(10)
         HStack {
           TextField(
@@ -72,7 +72,7 @@ struct HeathkitView: View {
             text: Binding(
               get: { "" },
               set: {
-                sendDebouncer.apply(value: $0.uppercased())
+                sendDebouncer.apply(value: sendTransform($0))
               }
             ),
             onCommit: {
@@ -82,7 +82,6 @@ struct HeathkitView: View {
             }
           )
             .disableAutocorrection(true)
-            .textInputAutocapitalization(.never)
           Button("Send sample") {
             [
               "G 1C00\r",
@@ -103,14 +102,8 @@ struct HeathkitView: View {
       switch phase {
       case .active:
         displayAdapter.adaptee = $display
-        terminal.onReceive = { symbol in
-          if unsupportedSymbols.contains(symbol) {
-            return
-          }
-          if symbol.isNewline && receiveText.last?.isNewline == true {
-            return
-          }
-          receiveText = (receiveText + symbol).takeLastLines(10)
+        terminal.onReceive = {
+          receiveText = receiveTransform(text: receiveText, symbol: $0)
         }
         execution.run(updateFrequency: { frequency = $0 })
       case .inactive, .background:
@@ -165,6 +158,23 @@ private final class Debouncer<T: Equatable> {
     action(value)
     lastValue = value
   }
+}
+
+private func receiveTransform(text: String, symbol: String) -> String {
+  if unsupportedSymbols.contains(symbol) {
+    return text
+  }
+  if symbol.isNewline && text.last?.isNewline == true {
+    return text
+  }
+  return (text + symbol).takeLastLines(20)
+}
+
+private func sendTransform(_ string: String) -> String {
+  if string == "\u{201C}" {
+    return "\""
+  }
+  return string.uppercased()
 }
 
 private let unsupportedSymbols: Set<String> = [
