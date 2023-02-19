@@ -43,3 +43,14 @@ func isOverflow(_ a: Bool, _ b: Bool, _ r: Bool) -> Bool {
   (a && b && !r) || (!a && !b && r)
 }
 
+extension String {
+  func takeLastLines(
+    _ number: Int,
+    lineSeparator: String = "\r"
+  ) -> String {
+    let lines = split(separator: lineSeparator, omittingEmptySubsequences: false)
+    return lines
+      .dropFirst(max(lines.count - number, 0))
+      .joined(separator: lineSeparator)
+  }
+}

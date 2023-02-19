@@ -4,20 +4,23 @@ struct HeathkitView: View {
   @Environment(\.scenePhase) var scenePhase
   
   private let keyboard: Keyboard
-  private let displayAdapter: DisplayAdapter
+  private let displayAdapter: OutputAdapter<Display>
   private let terminal: Terminal
   private let execution: Execution
   
   @State
+  var terminalText: String = ""
+  @State
   var display: Display = .filled
-  
   @State
   var frequency: UInt64 = 0
   
   init() {
     self.keyboard = Keyboard()
-    self.displayAdapter = DisplayAdapter()
-    self.terminal = Terminal()
+    self.displayAdapter = OutputAdapter()
+    self.terminal = Terminal(
+      address: 0x1000
+    )
     let inputDevices: [InputDevice] = [
       keyboard,
       terminal,
@@ -37,6 +40,10 @@ struct HeathkitView: View {
   
   var body: some View {
     VStack(spacing: 30) {
+      Text(
+        terminalText
+      ).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .lineLimit(10, reservesSpace: true)
       DisplayView(display: display)
         .frame(maxHeight: .infinity, alignment: .bottom)
       KeyboardView(keyboard: keyboard, reset: { execution.reset() })
@@ -52,11 +59,29 @@ struct HeathkitView: View {
       switch phase {
       case .active:
         displayAdapter.adaptee = $display
+        terminal.onReceive = { symbol in
+          terminalText = (terminalText + symbol).takeLastLines(10)
+        }
         execution.run(updateFrequency: { frequency = $0 })
       case .inactive, .background:
         execution.stop()
       default:
         break
+      }
+    }.onAppear {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        let strings: [String] = [
+          "G 1C00\r",
+          "100 LET I=0\r",
+          "200 PRINT \"HEATH TINY BASIC\"\r",
+          "300 I=I+1\r",
+          "400 IF I<5 GOTO 200\r",
+          "500 END\r",
+          "RUN\r",
+        ]
+        strings.forEach {
+          terminal.send($0)
+        }
       }
     }
   }
@@ -70,8 +95,8 @@ private extension Rom {
   }
 }
 
-private class DisplayAdapter: OutputDevice {
-  var adaptee: Binding<Display> = .constant(.filled)
+private class OutputAdapter<T: OutputDevice>: OutputDevice {
+  var adaptee: Binding<T>!
   
   var addressRange: ClosedRange<UInt16> {
     adaptee.wrappedValue.addressRange

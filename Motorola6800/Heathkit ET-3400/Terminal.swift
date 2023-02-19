@@ -1,76 +1,84 @@
+import Foundation
+
 final class Terminal {
-  private enum State {
-    case idle
-    case receive(accumulator: [Bool], waitCycles: UInt)
-    
+  enum BaudRate {
+    case low
+    case high
   }
-  private var state: State = .idle
-  private let delay: UInt
-  private let bitNumber: UInt8
   
-  private var latch: Bool = true
-  var text: String = ""
+  private let address: UInt16
+  private let baudRate: BaudRate
+  
+  private let receiver: Receiver
+  private let transmitter: Transmitter
+  
+  var onReceive: ((String) -> Void)? {
+    get { receiver.onReceive }
+    set { receiver.onReceive = newValue }
+  }
   
   init(
-    speed: UInt = 3740,
+    address: UInt16,
+    baudRate: BaudRate = .high,
     cpuFrequency: UInt = 1_000_000,
-    bitNumber: UInt8 = 0
+    asciiHalfOnly: Bool = true
   ) {
-    self.delay = cpuFrequency / speed
-    self.bitNumber = bitNumber
+    let delay = cpuFrequency / baudRate.speed
+    
+    self.address = address
+    self.baudRate = baudRate
+    self.receiver = Receiver(
+      delay: delay,
+      receiveMask: asciiHalfOnly ? 0x7F : 0xFF
+    )
+    self.transmitter = Transmitter(delay: delay)
+  }
+  
+  func send(_ string: String) {
+    for byte in string.data(using: .ascii)! {
+      transmitter.sendByte(byte)
+    }
   }
 }
 
 extension Terminal: OutputDevice {
   var addressRange: ClosedRange<UInt16> {
-    0x1000...0x1000
+    address...address
   }
   
   func writeByte(address: UInt16, value: UInt8) {
-    latch = value[bitNumber]
+    receiver.latch = value[0]
   }
   
   func tick() {
-    switch state {
-    case .idle:
-      if latch == false {
-        state = .receive(accumulator: [], waitCycles: delay + delay / 3)
-      }
-    case let .receive(accumulator, waitCycles):
-      if waitCycles == 0 {
-        if accumulator.count == 8 {
-          if latch {
-            let symbol = String(bytes: [accumulator.asByte], encoding: .ascii)!
-            text += symbol
-            print("###\(text)")
-          }
-          state = .idle
-        } else {
-          state = .receive(accumulator: accumulator + [latch], waitCycles: delay)
-        }
-      } else {
-        state = .receive(accumulator: accumulator, waitCycles: waitCycles - 1)
-      }
-    }
+    receiver.tick()
+    transmitter.tick()
   }
 }
 
 extension Terminal: InputDevice {
   func readByte(address: UInt16) -> UInt8 {
-    0x02
+    (transmitter.latch ? 0x80 : 0x00)
+    | baudRate.divider
   }
 }
 
-extension Array where Element == Bool {
-  var asByte: UInt8 {
-    UInt8(0)
-      | (self[0] ? 0x1 : 0x0)
-      | (self[1] ? 0x2 : 0x0)
-      | (self[2] ? 0x4 : 0x0)
-      | (self[3] ? 0x8 : 0x0)
-      | (self[4] ? 0x10 : 0x0)
-      | (self[5] ? 0x20 : 0x0)
-      | (self[6] ? 0x40 : 0x0)
-      | (self[7] ? 0x80 : 0x0)
+extension Terminal.BaudRate {
+  var speed: UInt {
+    switch self {
+    case .low:
+      return 110
+    case .high:
+      return 2400
+    }
+  }
+  
+  var divider: UInt8 {
+    switch self {
+    case .low:
+      return 0
+    case .high:
+      return 0x04
+    }
   }
 }

@@ -60,7 +60,7 @@ final class Execution {
       return
     }
     instruction.action(&processor, &memory)
-    remainingOpCycles = instruction.executionTime
+    remainingOpCycles = instruction.executionTime - 1
   }
   
   private func updatePerformanceCounter(elapsedCycles: UInt8 = 1) {

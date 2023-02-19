@@ -17,6 +17,8 @@
 		8C43E0B1297C3FD100C6AE33 /* CLV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43E0B0297C3FD100C6AE33 /* CLV.swift */; };
 		8C43E0B3297C40AB00C6AE33 /* CMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43E0B2297C40AB00C6AE33 /* CMP.swift */; };
 		8C43E2C0297E0C8D00C6AE33 /* CPX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43E2BF297E0C8D00C6AE33 /* CPX.swift */; };
+		8C4C715329A2688D00EF6DF9 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C715229A2688D00EF6DF9 /* Receiver.swift */; };
+		8C4C715529A268BA00EF6DF9 /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C715429A268BA00EF6DF9 /* Transmitter.swift */; };
 		8C62C7D5298B2AFC0072BE3D /* DecimalConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C62C7D4298B2AFC0072BE3D /* DecimalConverter.swift */; };
 		8C755A3029699ABC00827729 /* DAA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C755A2F29699ABC00827729 /* DAA.swift */; };
 		8C755A322969A39B00827729 /* JMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C755A312969A39B00827729 /* JMP.swift */; };
@@ -120,6 +122,8 @@
 		8C43E0B0297C3FD100C6AE33 /* CLV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLV.swift; sourceTree = "<group>"; };
 		8C43E0B2297C40AB00C6AE33 /* CMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMP.swift; sourceTree = "<group>"; };
 		8C43E2BF297E0C8D00C6AE33 /* CPX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPX.swift; sourceTree = "<group>"; };
+		8C4C715229A2688D00EF6DF9 /* Receiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
+		8C4C715429A268BA00EF6DF9 /* Transmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transmitter.swift; sourceTree = "<group>"; };
 		8C62C7D4298B2AFC0072BE3D /* DecimalConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalConverter.swift; sourceTree = "<group>"; };
 		8C755A2F29699ABC00827729 /* DAA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAA.swift; sourceTree = "<group>"; };
 		8C755A312969A39B00827729 /* JMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMP.swift; sourceTree = "<group>"; };
@@ -364,6 +368,8 @@
 				8CC3B05C298E951D00F7F608 /* SegmentIndicatorView.swift */,
 				8C9A5B302989E38100742D69 /* KeyboardView.swift */,
 				8CC3B43F2997082300F7F608 /* Terminal.swift */,
+				8C4C715229A2688D00EF6DF9 /* Receiver.swift */,
+				8C4C715429A268BA00EF6DF9 /* Transmitter.swift */,
 				8CEBF1482985DC6600FE9D0A /* et3400rom.bin */,
 				8CC3B4452998414900F7F608 /* eta_monitor.bin */,
 				8CC3B4462998414900F7F608 /* eta_basic.bin */,
@@ -551,6 +557,7 @@
 				8CEBF1462985D3FC00FE9D0A /* TXS.swift in Sources */,
 				8CEBEB232980AC4100FE9D0A /* DEX.swift in Sources */,
 				8CEBF11E298479E100FE9D0A /* PUL.swift in Sources */,
+				8C4C715529A268BA00EF6DF9 /* Transmitter.swift in Sources */,
 				8CEBEDDC2983455400FE9D0A /* ORA.swift in Sources */,
 				8C9A595F29871CCB00742D69 /* Devices.swift in Sources */,
 				8C43E0B1297C3FD100C6AE33 /* CLV.swift in Sources */,
@@ -576,6 +583,7 @@
 				8CEBF14D2987180B00FE9D0A /* Keyboard.swift in Sources */,
 				8CEBEB272981DAEA00FE9D0A /* INC.swift in Sources */,
 				8C43E0AD297C3D7B00C6AE33 /* CLI.swift in Sources */,
+				8C4C715329A2688D00EF6DF9 /* Receiver.swift in Sources */,
 				8CF0A8E2297765E000A03033 /* CBA.swift in Sources */,
 				8C755A322969A39B00827729 /* JMP.swift in Sources */,
 				8C43E0A92978B08F00C6AE33 /* RTS.swift in Sources */,
