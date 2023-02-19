@@ -67,6 +67,7 @@ struct HeathkitView: View {
           .lineLimit(11, reservesSpace: true)
           .padding(10)
         TextField(
+          "Keyboard",
           text: Binding(
             get: { "" },
             set: {
@@ -75,9 +76,9 @@ struct HeathkitView: View {
               )
             }
           )
-        ) {
-          Text("Keyboard")
-        }.padding(10)
+        ).padding(10)
+          .disableAutocorrection(true)
+          .textInputAutocapitalization(.never)
         Button("Send sample") {
           [
             "G 1C00\r",

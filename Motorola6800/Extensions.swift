@@ -48,7 +48,10 @@ extension String {
     _ number: Int,
     lineSeparator: String = "\r"
   ) -> String {
-    let lines = split(separator: lineSeparator, omittingEmptySubsequences: false)
+    let lines = split(
+      omittingEmptySubsequences: false,
+      whereSeparator: { CharacterSet.newlines.contains($0.unicodeScalars.first!) }
+    )
     return lines
       .dropFirst(Swift.max(lines.count - number, 0))
       .joined(separator: lineSeparator)
