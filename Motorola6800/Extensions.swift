@@ -50,10 +50,14 @@ extension String {
   ) -> String {
     let lines = split(
       omittingEmptySubsequences: false,
-      whereSeparator: { CharacterSet.newlines.contains($0.unicodeScalars.first!) }
+      whereSeparator: { $0.isNewline }
     )
     return lines
       .dropFirst(Swift.max(lines.count - number, 0))
       .joined(separator: lineSeparator)
+  }
+  
+  var isNewline: Bool {
+    count == 1 && first!.isNewline
   }
 }

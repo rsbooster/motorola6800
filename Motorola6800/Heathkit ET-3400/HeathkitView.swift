@@ -101,7 +101,10 @@ struct HeathkitView: View {
       case .active:
         displayAdapter.adaptee = $display
         terminal.onReceive = { symbol in
-          guard symbol != "\0" else {
+          if unsupportedSymbols.contains(symbol) {
+            return
+          }
+          if symbol.isNewline && receiveText.last?.isNewline == true {
             return
           }
           receiveText = (receiveText + symbol).takeLastLines(10)
@@ -160,3 +163,8 @@ private final class Debouncer<T: Equatable> {
     lastValue = value
   }
 }
+
+private let unsupportedSymbols: Set<String> = [
+  "\u{00}",
+  "\u{7F}",
+]
