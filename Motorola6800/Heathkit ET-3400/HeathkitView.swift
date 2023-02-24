@@ -74,15 +74,19 @@ struct HeathkitView: View {
               set: {
                 sendDebouncer.apply(value: sendTransform($0))
               }
-            ),
-            onCommit: {
-              sendDebouncer.apply(
-                value: "\r"
-              )
-            }
+            )
           )
             .disableAutocorrection(true)
-          Button("Send sample") {
+          Button("^@") {
+            terminal.send("\u{00}")
+          }
+          Button("ESC") {
+            terminal.send("\u{1B}")
+          }
+          Button("CR") {
+            terminal.send("\r")
+          }
+          Button("Sample") {
             [
               "G 1C00\r",
               "100 LET I=0\r",
@@ -95,7 +99,33 @@ struct HeathkitView: View {
               terminal.send($0)
             }
           }
-        }.padding(20)
+        }.padding(defaultPadding)
+        HStack {
+          Button("^A") {
+            terminal.send("\u{01}")
+          }
+          Button("^B") {
+            terminal.send("\u{02}")
+          }
+          Button("^C") {
+            terminal.send("\u{03}")
+          }
+          Button("^H") {
+            terminal.send("\u{08}")
+          }
+          Button("^P") {
+            terminal.send("\u{10}")
+          }
+          Button("^S") {
+            terminal.send("\u{13}")
+          }
+          Button("^T") {
+            terminal.send("\u{14}")
+          }
+          Button("^X") {
+            terminal.send("\u{18}")
+          }
+        }.padding(defaultPadding)
       }
     }
     .onChange(of: scenePhase) { phase in
@@ -181,3 +211,5 @@ private let unsupportedSymbols: Set<String> = [
   "\u{00}",
   "\u{7F}",
 ]
+
+private let defaultPadding = EdgeInsets(top: 0, leading: 20, bottom: 5, trailing: 20)
