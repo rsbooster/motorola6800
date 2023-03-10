@@ -7,19 +7,16 @@ final class Receiver {
   }
   
   private let delay: UInt
-  private let receiveMask: UInt8
   
   private var state: State = .idle
   
   var latch = true
-  var onReceive: ((String) -> Void)?
+  var onReceive: ((UInt8) -> Void)?
   
   init(
-    delay: UInt,
-    receiveMask: UInt8
+    delay: UInt
   ) {
     self.delay = delay
-    self.receiveMask = receiveMask
   }
   
   func tick() {
@@ -31,8 +28,7 @@ final class Receiver {
     case let (.receive(accumulator, 0), latch):
       if accumulator.count == 8 {
         if latch {
-          let symbol = String(bytes: [accumulator.asByte & receiveMask], encoding: .ascii)!
-          onReceive?(symbol)
+          onReceive?(accumulator.asByte)
         }
         state = .idle
       } else {

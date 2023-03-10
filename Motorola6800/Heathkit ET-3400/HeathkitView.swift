@@ -6,6 +6,7 @@ struct HeathkitView: View {
   private let keyboard: Keyboard
   private let displayAdapter: OutputAdapter<Display>
   private let terminal: Terminal
+  private let casette: Casette
   private let execution: Execution
   private let sendDebouncer: Debouncer<String>
   
@@ -24,17 +25,26 @@ struct HeathkitView: View {
     self.terminal = Terminal(
       address: 0x1000
     )
+    self.casette = Casette(
+      address: 0x1002
+    )
     let inputDevices: [InputDevice] = [
       keyboard,
       terminal,
+      casette,
       Rom(file: "eta_monitor", baseAddress: 0x1400),
       Rom(file: "eta_basic", baseAddress: 0x1C00),
       Rom(file: "et3400rom", baseAddress: 0xFC00),
     ]
+    let outputDevices: [OutputDevice] = [
+      displayAdapter,
+      terminal,
+      casette
+    ]
     let memory = Memory(
-      ram: Samples.decimalConverter,
+      ram: Samples.decimalCounter,
       inputDevices: inputDevices,
-      outputDevices: [displayAdapter, terminal]
+      outputDevices: outputDevices
     )
     self.execution = Execution(
       memory: memory
@@ -124,6 +134,17 @@ struct HeathkitView: View {
           }
           Button("^X") {
             terminal.send("\u{18}")
+          }
+        }.padding(defaultPadding)
+        HStack {
+          Button("Rec") {
+            casette.record()
+          }
+          Button("Stop") {
+            casette.stop()
+          }
+          Button("Play") {
+            casette.play()
           }
         }.padding(defaultPadding)
       }
