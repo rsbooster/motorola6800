@@ -4,7 +4,7 @@ import SwiftUI
 struct Motorola6800App: App {
   var body: some Scene {
     WindowGroup {
-      HeathkitView()
+      PongView()
     }
   }
 }
