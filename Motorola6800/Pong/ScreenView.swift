@@ -5,34 +5,43 @@ struct ScreenView: View {
   var buffer: Set<Screen.Pixel>
   
   var body: some View {
-    Path(buffer.path)
-      .stroke(style: .init(lineWidth: 1, lineCap: .round))
-      .frame(width: 200, height: 150)
-      .padding(.init(top: 1, leading: 1, bottom: 0, trailing: 0))
-      .background { Color(.lightGray) }
-      .scaleEffect(4)
+    GeometryReader { geometry in
+      buffer
+        .makePath(size: geometry.size)
+        .fill()
+        .background { Color(.lightGray) }
+    }.aspectRatio(originalSize, contentMode: .fit)
   }
 }
 
 private extension Collection where Element == Screen.Pixel {
-  var path: CGPath {
-    let path = CGMutablePath()
+  func makePath(size: CGSize) -> Path {
+    var path = Path()
     for pixel in self {
-      path.move(to: pixel.point)
-      path.addLine(to: pixel.point)
+      path.addRect(pixel.makeRectangle(for: size))
     }
     return path
   }
 }
 
 private extension Screen.Pixel {
-  var point: CGPoint {
-    CGPoint(x: Int(x), y: Int(y))
+  func makeRectangle(for size: CGSize) -> CGRect {
+    CGRect(
+      x: CGFloat(x) / originalSize.width * size.width,
+      y: CGFloat(y) / originalSize.height * size.height,
+      width: floor(size.width / originalSize.width),
+      height: floor(size.height / originalSize.height)
+    )
   }
 }
 
+private let originalSize = CGSize(width: 200, height: 150)
+
 struct ScreenView_Previews: PreviewProvider {
   static var previews: some View {
-    ScreenView(buffer: [])
+    ScreenView(buffer: [
+      .init(x: 0, y: 0),
+      .init(x: 100, y: 100),
+    ])
   }
 }
