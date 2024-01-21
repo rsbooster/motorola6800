@@ -1,20 +1,14 @@
 import Foundation
+import QuartzCore
 
 final class Execution {
   private let instructionMap: [UInt8: Instruction]
   private var processor: Processor
   private var memory: Memory
   
+  private lazy var displayLink = CADisplayLink(target: self, selector: #selector(onDisplay))
   private var logging = false
-  private var timer: Timer? {
-    didSet {
-      oldValue?.invalidate()
-      if let timer {
-        RunLoop.main.add(timer, forMode: .common)
-      }
-    }
-  }
-  
+ 
   private var performanceCounter: (time: DispatchTime, cycles: UInt64) = (.now(), cycleCount)
   private var updateFrequency: (UInt64) -> Void = { _ in }
   private var remainingOpCycles: UInt8 = 0
@@ -35,6 +29,13 @@ final class Execution {
       emulated: .init(waitingForInterrupt: false)
     )
     reset()
+  }
+  
+  @objc private func onDisplay() {
+    let stepCount = Int((displayLink.targetTimestamp - displayLink.timestamp) * 100_000)
+    for _ in 0...stepCount {
+      step()
+    }
   }
   
   func step() {
@@ -73,23 +74,14 @@ final class Execution {
     }
   }
   
-  private func makeTimer() -> Timer {
-    Timer.scheduledTimer(
-      withTimeInterval: 1e-5,
-      repeats: true,
-      block: { [weak self] _ in
-        self?.step()
-      }
-    )
-  }
   
   func run(updateFrequency: @escaping (UInt64) -> Void) {
     self.updateFrequency = updateFrequency
-    self.timer = makeTimer()
+    displayLink.add(to: .current, forMode: .common)
   }
   
   func stop() {
-    timer = nil
+    displayLink.invalidate()
   }
   
   func reset() {
@@ -98,7 +90,7 @@ final class Execution {
   }
   
   deinit {
-    timer = nil
+    stop()
   }
 }
 
