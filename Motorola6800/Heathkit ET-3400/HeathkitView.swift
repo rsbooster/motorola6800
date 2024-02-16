@@ -77,24 +77,8 @@ struct HeathkitView: View {
           .font(.system(size: 11).monospaced())
           .padding(10)
         HStack {
-          TextField(
-            "Keyboard",
-            text: Binding(
-              get: { "" },
-              set: {
-                sendDebouncer.apply(value: sendTransform($0))
-              }
-            )
-          )
-            .disableAutocorrection(true)
-          Button("^@") {
-            terminal.send("\u{00}")
-          }
-          Button("ESC") {
-            terminal.send("\u{1B}")
-          }
-          Button("CR") {
-            terminal.send("\r")
+          KeyboardHandler {
+            terminal.send($0)
           }
           Button("Sample") {
             [
@@ -109,8 +93,26 @@ struct HeathkitView: View {
               terminal.send($0)
             }
           }
+          Button("Rec") {
+            casette.record()
+          }
+          Button("Stop") {
+            casette.stop()
+          }
+          Button("Play") {
+            casette.play()
+          }
         }.padding(defaultPadding)
         HStack {
+          Button("^@") {
+            terminal.send("\u{00}")
+          }
+          Button("ESC") {
+            terminal.send("\u{1B}")
+          }
+          Button("CR") {
+            terminal.send("\r")
+          }
           Button("^A") {
             terminal.send("\u{01}")
           }
@@ -134,17 +136,6 @@ struct HeathkitView: View {
           }
           Button("^X") {
             terminal.send("\u{18}")
-          }
-        }.padding(defaultPadding)
-        HStack {
-          Button("Rec") {
-            casette.record()
-          }
-          Button("Stop") {
-            casette.stop()
-          }
-          Button("Play") {
-            casette.play()
           }
         }.padding(defaultPadding)
       }

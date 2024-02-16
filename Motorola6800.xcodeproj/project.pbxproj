@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C0CC2022968D6D6009BE6FB /* NOP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0CC2012968D6D6009BE6FB /* NOP.swift */; };
+		8C35DB902B6F0FBD008B9019 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35DB8F2B6F0FBD008B9019 /* KeyboardHandler.swift */; };
 		8C43E0A32978ACCE00C6AE33 /* BIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43E0A22978ACCE00C6AE33 /* BIT.swift */; };
 		8C43E0A72978AEF500C6AE33 /* BSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43E0A62978AEF500C6AE33 /* BSR.swift */; };
 		8C43E0A92978B08F00C6AE33 /* RTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43E0A82978B08F00C6AE33 /* RTS.swift */; };
@@ -118,6 +119,7 @@
 
 /* Begin PBXFileReference section */
 		8C0CC2012968D6D6009BE6FB /* NOP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NOP.swift; sourceTree = "<group>"; };
+		8C35DB8F2B6F0FBD008B9019 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		8C43E0A22978ACCE00C6AE33 /* BIT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIT.swift; sourceTree = "<group>"; };
 		8C43E0A62978AEF500C6AE33 /* BSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSR.swift; sourceTree = "<group>"; };
 		8C43E0A82978B08F00C6AE33 /* RTS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTS.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				8C4C744F29A9224B00EF6DF9 /* UART.swift */,
 				8C4C715229A2688D00EF6DF9 /* Receiver.swift */,
 				8C4C715429A268BA00EF6DF9 /* Transmitter.swift */,
+				8C35DB8F2B6F0FBD008B9019 /* KeyboardHandler.swift */,
 				8CEBF1482985DC6600FE9D0A /* et3400rom.bin */,
 				8CC3B4452998414900F7F608 /* eta_monitor.bin */,
 				8CC3B4462998414900F7F608 /* eta_basic.bin */,
@@ -566,6 +569,7 @@
 				8CB86AD9296865DA007823D0 /* ABA.swift in Sources */,
 				8CF0A44929736DB000A03033 /* ADD.swift in Sources */,
 				8CF0A4432972189000A03033 /* LDS.swift in Sources */,
+				8C35DB902B6F0FBD008B9019 /* KeyboardHandler.swift in Sources */,
 				8CB86AD4296844B8007823D0 /* Execution.swift in Sources */,
 				8CEBEB252981DA1100FE9D0A /* EOR.swift in Sources */,
 				8CEBF13C2985D11800FE9D0A /* TAP.swift in Sources */,
