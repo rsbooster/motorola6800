@@ -62,3 +62,25 @@ private final class KeyboardHandlerView: UIView {
     onKey(string)
   }
 }
+
+extension KeyboardHandlerView: UIKeyInput {
+  var hasText: Bool { true }
+  
+  func insertText(_ text: String) {
+    onKey(text)
+  }
+  
+  func deleteBackward() {}
+}
+
+extension KeyboardHandlerView: UITextInputTraits {
+  var autocapitalizationType: UITextAutocapitalizationType {
+    get { .allCharacters }
+    set {  }
+  }
+  
+  var keyboardType: UIKeyboardType {
+    get { .asciiCapable }
+    set { }
+  }
+}
