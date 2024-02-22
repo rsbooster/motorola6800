@@ -61,4 +61,5 @@ extension InstructionSet {
     + InstructionSet.TSX
     + InstructionSet.TXS
     + InstructionSet.WAI
+    + InstructionSet.undocumented
 }

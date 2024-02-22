@@ -89,6 +89,7 @@ struct Instruction {
     case DEX
     case EORA
     case EORB
+    case HCF
     case INC
     case INCA
     case INCB
@@ -103,6 +104,7 @@ struct Instruction {
     case LSRA
     case LSRB
     case LSR
+    case NBA
     case NEGA
     case NEGB
     case NEG

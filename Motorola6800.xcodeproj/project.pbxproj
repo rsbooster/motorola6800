@@ -32,6 +32,7 @@
 		8C9A5B2F2989E11400742D69 /* Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A5B2E2989E11400742D69 /* Samples.swift */; };
 		8C9A5B312989E38100742D69 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A5B302989E38100742D69 /* KeyboardView.swift */; };
 		8C9A5B332989E3AD00742D69 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A5B322989E3AD00742D69 /* DisplayView.swift */; };
+		8C9CFFCE2B880C410039B1D7 /* Undocumented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CFFCD2B880C410039B1D7 /* Undocumented.swift */; };
 		8CB86AA629683776007823D0 /* Motorola6800App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86AA529683776007823D0 /* Motorola6800App.swift */; };
 		8CB86AA829683776007823D0 /* HeathkitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86AA729683776007823D0 /* HeathkitView.swift */; };
 		8CB86AAA29683778007823D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CB86AA929683778007823D0 /* Assets.xcassets */; };
@@ -143,6 +144,7 @@
 		8C9A5B2E2989E11400742D69 /* Samples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Samples.swift; sourceTree = "<group>"; };
 		8C9A5B302989E38100742D69 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		8C9A5B322989E3AD00742D69 /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
+		8C9CFFCD2B880C410039B1D7 /* Undocumented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Undocumented.swift; sourceTree = "<group>"; };
 		8CB86AA229683776007823D0 /* Motorola6800.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motorola6800.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB86AA529683776007823D0 /* Motorola6800App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motorola6800App.swift; sourceTree = "<group>"; };
 		8CB86AA729683776007823D0 /* HeathkitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeathkitView.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				8CEBF1432985D34B00FE9D0A /* TSX.swift */,
 				8CEBF1452985D3FC00FE9D0A /* TXS.swift */,
 				8CB86ADC29686672007823D0 /* WAI.swift */,
+				8C9CFFCD2B880C410039B1D7 /* Undocumented.swift */,
 			);
 			path = InstructionSet;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				8CF0A44929736DB000A03033 /* ADD.swift in Sources */,
 				8CF0A4432972189000A03033 /* LDS.swift in Sources */,
 				8C35DB902B6F0FBD008B9019 /* KeyboardHandler.swift in Sources */,
+				8C9CFFCE2B880C410039B1D7 /* Undocumented.swift in Sources */,
 				8CB86AD4296844B8007823D0 /* Execution.swift in Sources */,
 				8CEBEB252981DA1100FE9D0A /* EOR.swift in Sources */,
 				8CEBF13C2985D11800FE9D0A /* TAP.swift in Sources */,
