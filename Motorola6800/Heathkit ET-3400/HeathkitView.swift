@@ -9,6 +9,7 @@ struct HeathkitView: View {
   private let casette: Casette
   private let execution: Execution
   private let sendDebouncer: Debouncer<String>
+  private let hasExternal: Bool
   
   @State
   var trainerVisible = true
@@ -52,6 +53,7 @@ struct HeathkitView: View {
       memory: memory
     )
     self.sendDebouncer = Debouncer(action: terminal.send)
+    self.hasExternal = !external.isEmpty
   }
   
   var body: some View {
@@ -95,8 +97,10 @@ struct HeathkitView: View {
               terminal.send($0)
             }
           }
-          Button("Load Basic") {
-            execution.loadExternalMemory()
+          if hasExternal {
+            Button("Load External") {
+              execution.loadExternalMemory()
+            }
           }
           Button("Rec") {
             casette.record()
