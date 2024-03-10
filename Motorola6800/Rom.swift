@@ -8,7 +8,7 @@ struct Rom: InputDevice {
     baseAddress: UInt16,
     data: Data
   ) {
-    let upperBound = baseAddress - 1 + UInt16(data.count)
+    let upperBound = baseAddress &- 1 &+ UInt16(data.count)
     self.addressRange = baseAddress...upperBound
     self.data = data
   }

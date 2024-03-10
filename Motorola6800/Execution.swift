@@ -80,6 +80,10 @@ final class Execution {
     displayLink.add(to: .current, forMode: .common)
   }
   
+  func loadExternalMemory() {
+    memory.loadExternal()
+  }
+  
   func stop() {
     displayLink.invalidate()
   }

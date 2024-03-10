@@ -19,23 +19,24 @@ struct HeathkitView: View {
   @State
   var frequency: UInt64 = 0
   
-  init() {
+  init(
+    terminalBaseAddress: UInt16 = 0x1000,
+    roms: [Rom],
+    external: [Rom] = []
+  ) {
     self.keyboard = Keyboard()
     self.displayAdapter = OutputAdapter()
     self.terminal = Terminal(
-      address: 0x1000
+      address: terminalBaseAddress
     )
     self.casette = Casette(
-      address: 0x1002
+      address: terminalBaseAddress + 2
     )
     let inputDevices: [InputDevice] = [
       keyboard,
       terminal,
-      casette,
-      Rom(file: "eta_monitor", baseAddress: 0x1400),
-      Rom(file: "eta_basic", baseAddress: 0x1C00),
-      Rom(file: "et3400rom", baseAddress: 0xFC00),
-    ]
+      casette
+    ] + roms
     let outputDevices: [OutputDevice] = [
       displayAdapter,
       terminal,
@@ -44,7 +45,8 @@ struct HeathkitView: View {
     let memory = Memory(
       ram: Samples.decimalCounter,
       inputDevices: inputDevices,
-      outputDevices: outputDevices
+      outputDevices: outputDevices,
+      externalDevices: external
     )
     self.execution = Execution(
       memory: memory
@@ -92,6 +94,9 @@ struct HeathkitView: View {
             ].forEach {
               terminal.send($0)
             }
+          }
+          Button("Load Basic") {
+            execution.loadExternalMemory()
           }
           Button("Rec") {
             casette.record()
@@ -157,7 +162,7 @@ struct HeathkitView: View {
   }
 }
 
-private extension Rom {
+extension Rom {
   init(file: String, baseAddress: UInt16) {
     let url = Bundle.main.url(forResource: file, withExtension: "bin")!
     let data = try! Data(contentsOf: url)
@@ -179,7 +184,9 @@ private class OutputAdapter<T: OutputDevice>: OutputDevice {
 
 struct HeathkitView_Previews: PreviewProvider {
   static var previews: some View {
-    HeathkitView()
+    HeathkitView(
+      roms: [Rom(file: "et3400rom", baseAddress: 0xFC00)]
+    )
   }
 }
 

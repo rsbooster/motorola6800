@@ -158,16 +158,19 @@ struct Memory {
   private var content: [UInt8]
   private let inputDevices: [InputDevice]
   private let outputDevices: [OutputDevice]
+  private let externalDevices: [InputDevice]
   
   init(
     ram: [UInt8],
     inputDevices: [InputDevice],
-    outputDevices: [OutputDevice]
+    outputDevices: [OutputDevice],
+    externalDevices: [InputDevice]
   ) {
     self.content = ram
       + Array(repeating: 0, count: 65536 - ram.count)
     self.inputDevices = inputDevices
     self.outputDevices = outputDevices
+    self.externalDevices = externalDevices
   }
   
   func readByte(_ address: UInt16) -> UInt8 {
@@ -218,6 +221,14 @@ struct Memory {
   func tick() {
     inputDevices.forEach { $0.tick() }
     outputDevices.forEach { $0.tick() }
+  }
+  
+  mutating func loadExternal() {
+    for device in externalDevices {
+      for address in device.addressRange {
+        writeByte(address: address, value: device.readByte(address: address))
+      }
+    }
   }
 }
 

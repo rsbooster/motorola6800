@@ -30,7 +30,8 @@ struct PongView: View {
         Rom(baseAddress: 0x8000, data: Data(Samples.pong)),
         Rom(baseAddress: 0xFFFE, data: Data([0x80, 0x00])),
       ],
-      outputDevices: [screen]
+      outputDevices: [screen],
+      externalDevices: []
     )
     self.execution = Execution(
       memory: memory
